@@ -1,0 +1,59 @@
+<div class="col-md-12">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title"> Document </span>
+            <a class="btn btn-primary pull-right add-banner" data-added="0"><i class="glyphicon glyphicon-plus"></i> Add Row </a>
+        </div>
+
+        <div class="panel-body" id="row_banner_body">
+            <div class="row" id="banner-headingg">
+                <div class="col-md-1">
+                    <label>Ordering</label>
+
+                </div>
+                <div class="col-md-3">
+                    <label>Title</label>
+                </div>
+                <!--<div class="col-md-3">-->
+                <!--    <label>Video</label>-->
+
+                <!--</div>-->
+                
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" id="banner-rec-1">
+
+            </div>
+        </div>
+
+        <div style="display:none;">
+            <div id="row_banner_additional">
+                <input type="hidden" name="banner_id[]" value="" />
+                <div class="row" id="banner-headingg">
+                    
+                    <div class="col-md-12">
+                        <div class="col-md-1"><label>Ordering</label></div>
+                        <div class="col-md-10"><label>Title</label></div>
+                    </div> 
+                    <div class="col-md-1">
+                        <input type="number" min="1" max="2000" name="banner_ordering[]" class="form-control" placeholder="" />
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="banner_title[]" class="form-control" placeholder="" />
+                    </div>
+                    <div class="col-md-10"><label>Content</label></div>
+                    <div class="col-md-10">
+                        <textarea class="form-control" name="banner_content[]" placeholder=""></textarea>
+                    </div>
+
+                    <div class="col-md-1"><button class="btn btn-danger delete-banner" banner-data-id="0"><i class="glyphicon glyphicon-trash"></i></button></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+<?php /**PATH /home/lhakpa/public_html/resources/views/admin/trips/create/create-banner.blade.php ENDPATH**/ ?>

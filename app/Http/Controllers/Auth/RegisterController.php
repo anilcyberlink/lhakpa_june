@@ -1,0 +1,130 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Model\VerifyUser;
+use Illuminate\Support\Str;
+use App\Mail\VerifyMail;
+
+
+class RegisterController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('guest');
+    // }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    protected function store(Request $request)
+    {
+
+        $g_recaptcha_response = $request->input('g_recaptcha_response2');
+        $result = $this->getCaptcha($g_recaptcha_response);
+        if($result->success == true && $result->score > 0.3){
+            // dd($request->all());
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|unique:users,email',
+                'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            ]);
+    
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'roles' => 'user'
+            ]);
+    
+            $user->subscriber()->create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'verified' => 0,
+            ]);
+    
+            $verifyUser = VerifyUser::create([
+                'user_id' => $user->id,
+                'token' => Str::random(20)
+            ]);
+            if ($user && $verifyUser) {
+                return new VerifyMail($verifyUser->token, $user->id, $user->name);
+                // Mail::send(new VerifyMail($verifyUser->token, $user->id, $user->name));
+            }
+    
+            Session::flash('success', 'Please verify your email to complete registration process');
+            return redirect()->intended(route('index.front'));  
+        }else{
+            return back()->with('message','You are a robot');
+        }
+    }
+    
+    private function getCaptcha($secretKey)
+    {
+        $secret_key = env('SECRET_KEY');
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secret_key . "&response={$secretKey}");
+        $result = json_decode($response);
+        return $result;
+    }
+}

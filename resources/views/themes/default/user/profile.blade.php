@@ -1,0 +1,129 @@
+@extends('themes.default.common.master')
+@section('content')
+<section class=" uk-cover-container uk-position-relative uk-flex uk-flex-middle uk-background-norepeat uk-background-cover uk-background-top-center uk-background-fixed uk-grey-bg" style="height:400px;" data-src="{{ asset('theme-assets/img/bg/pattern.png') }}" alt="" uk-img>
+    <div class="uk-container uk-width-1-1  uk-position-relative">
+        <div class="uk-flex uk-flex-middle uk-flex-center uk-grid-collapse " uk-grid>
+            <div class="uk-width-1-1@m">
+                <div class="uk-sub-banner-font uk-text-center">
+                    <h2 class="uk-secondary uk-margin-large-top">Profile Info</h2>  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="uk-section ">
+    <div class="uk-container">
+        <div class="uk-div-overlay " uk-grid>
+            <div class="uk-width-1-4@m ">
+                @include('themes.default.user.sidebar')
+            </div>
+            <div class="uk-width-3-4@m">
+                <p class="uk-visible@m uk-white" style="margin:2rem 0px 4rem 0;">Update you profile details below:
+                </p>
+                <div class="uk-container">
+                    <div class="uk-light-bg uk-border-rounded uk-padding"> 
+                     
+                        <div uk-grid>
+                            <div class="uk-width-1-4@m uk-flex uk-flex-center">
+                                <img src="{{Auth::user()->image ? asset('user-profile/'.Auth::user()->image) : asset('theme-assets/img/user.png')}}" class="uk-profile-img2" alt="">
+                            </div>
+                            <div class="uk-width-3-4@m uk-flex uk-flex-middle">
+                                <div class="uk-child-width-1-2@m uk-grid">
+                                    <div class="uk-margin-bottom">
+                                        <p class="uk-margin-remove uk-primary">Full Name:</p>
+                                        <p class="uk-margin-remove">{{ Auth::user()->name }}</p>
+                                    </div>
+                                    <div class="uk-margin-bottom">
+                                        <p class="uk-margin-remove uk-primary">Address:</p>
+                                        <p class="uk-margin-remove ">{{ Auth::user()->address }}</p>
+                                    </div>
+                                    <div class="uk-margin-bottom">
+                                        <p class="uk-margin-remove uk-primary">Email Address:</p>
+                                        <p class="uk-margin-remove">{{ Auth::user()->email }}</p>
+                                    </div>
+                                    <div class="uk-margin-bottom">
+                                        <p class="uk-margin-remove uk-primary">Phone Number:</p>
+                                        <p class="uk-margin-remove">{{ Auth::user()->phone }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="post" action="{{ route('user-profile') }}" enctype="multipart/form-data">
+                       @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
+                        <div class=" uk-child-width-1-2@s uk-grid">
+                            <div>
+                                 <h3 class="uk-primary uk-margin-medium-top">Update your Profile</h3>
+                            </div>
+                            <div class="uk-margin-medium-top uk-text-left uk-text-right@m">
+                                @if(session()->has('intended_trip'))
+                                <a href="{{ url('page/' . tripurl(session('intended_trip'))) }}" class="uk-btn uk-btn-secondary" >Continue Booking <span uk-icon="chevron-right"></span></a>
+                                @endif
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="uk-grid">  
+                            <div class="uk-width-1-1@s uk-margin-small-top">
+                                <div class="uk-flex uk-flex-column" uk-form-custom>
+                                    <label class="uk-form-label " for="image">Profile Image:</label>
+                                    <div class="uk-flex uk-flex-middle">
+                                        <input type="file" aria-label="Custom controls" name="imageProfile">
+                                        <button class="uk-button uk-button-default uk-margin-small-right" type="button" tabindex="-1" style="border: 1px solid #333 !important;">Change Profile</button>
+                                        <p class="uk-margin-remove">Upload JPG, JPEG or PNG image</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s uk-margin-small-top">
+                                <label class="uk-form-label " for="name">Full Name:</label>
+                                <input class="uk-input border" type="text" aria-label="name" name="name" value="{{ Auth::user()->name }}">
+                            </div>
+                            <div class="uk-width-1-2@s uk-margin-small-top">
+                                <label class="uk-form-label " for="address">Address:</label>
+                                <input class="uk-input border" type="text" aria-label="address" name="address"  value="{{ Auth::user()->address }}">
+                            </div>
+                            <div class="uk-width-1-2@s uk-margin-small-top">
+                                <label class="uk-form-label " for="email">Email: </label>
+                                <input class="uk-input border" type="email" name="email" aria-label="email" value="{{ Auth::user()->email }}" readonly>
+                            </div>
+                            <div class="uk-width-1-2@s uk-margin-small-top">
+                                <label class="uk-form-label " for="contact">Contact:</label>
+                                <input class="uk-input border" type="number" name="phone" aria-label="contact" 
+                                value="{{ Auth::user()->phone }}">
+                            </div>
+                            <div class="uk-width-1-1@s uk-margin-small-top">
+                                <label class="uk-form-label " for="Category">Your way of Travelling:</label>
+                                <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
+                                @foreach($tripsTags as $tag)
+                                    <label>
+                                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}" 
+                                               class="uk-checkbox uk-margin-small-right"
+                                               {{ in_array($tag->id, $selectedTags ?? []) ? 'checked' : '' }}>
+                                        {{ $tag->title }}
+                                    </label>
+                                @endforeach
+                                          
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1 uk-margin-medium-top">
+                            <button type="submit" class="uk-btn uk-btn-secondary">Update Profile </button>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@stop
+
+@push('scripts')
+<script type="text/javascript">
+document.getElementById('Category').addEventListener('change', function() {
+    let selectedValues = Array.from(this.selectedOptions).map(option => option.value);
+    console.log("Selected Categories: ", selectedValues);
+});
+</script>
+
+
+@endpush

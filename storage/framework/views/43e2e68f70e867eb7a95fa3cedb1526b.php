@@ -1,12 +1,12 @@
-@extends('admin.master')
-@section('title', 'Post Type')
-@section('breadcrumb')
-    <a href="{{ route('type.posttype.index', Request::segment(2)) }}" class="btn btn-primary btn-sm">List</a>
-@endsection
-@section('content')
-    <form class="form-horizontal" role="form" action="{{ route('type.posttype.store', Request::segment(2)) }}" method="post"
+<?php $__env->startSection('title', 'Post Type'); ?>
+<?php $__env->startSection('breadcrumb'); ?>
+    <a href="<?php echo e(route('type.posttype.index', Request::segment(2))); ?>" class="btn btn-primary btn-sm">List</a>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <form class="form-horizontal" role="form" action="<?php echo e(route('type.posttype.store', Request::segment(2))); ?>" method="post"
         enctype="multipart/form-data">
-        {{ csrf_field() }}
+        <?php echo e(csrf_field()); ?>
+
         <div class="col-md-9">
             <!-- Input Fields -->
             <div class="panel">
@@ -52,7 +52,7 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <input type="text" id="ordering" name="ordering" class="form-control"
-                                    value="{{ $ordering }}" />
+                                    value="<?php echo e($ordering); ?>" />
                             </div>
                         </div>
                     </div>
@@ -108,9 +108,9 @@
                     <label class="field select">
                         <select id="nav_type" name="nav_type" required>
                             <option value="" selected hidden>Select Type</option>
-                            <option value="company">Company & Information</option>
-                            <option value="support">Services & Support</option>
-                            <option value="media">Media & Team</option>
+                            <option value="about">Company & Information</option>
+                            <option value="about">Services & Support</option>
+                            <option value="about">Media & Team</option>
                         </select>
                         <i class="arrow"></i>
                     </label>
@@ -118,9 +118,9 @@
                 <div class="sid_bvijay mb10">
                     <label class="field select">
                         <select id="template" name="template">
-                            @foreach($templates as $key => $template)
-                                <option value="{{$key}}">{{ ucfirst($template) }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $templates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($key); ?>"><?php echo e(ucfirst($template)); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         <i class="arrow"></i>
                     </label>
@@ -138,8 +138,8 @@
         </div>
 
     </form>
-@endsection
-@section('scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
     <script type="text/javascript">
         $(document).ready(function () {
             var post_type;
@@ -151,4 +151,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Lhakpa_june\resources\views/admin/post-type/create.blade.php ENDPATH**/ ?>

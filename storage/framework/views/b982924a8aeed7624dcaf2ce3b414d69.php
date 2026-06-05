@@ -1,12 +1,12 @@
-@extends('admin.master')
-@section('title', 'Post Type')
-@section('breadcrumb')
-    <a href="{{ route('type.posttype.index', Request::segment(2)) }}" class="btn btn-primary btn-sm">List</a>
-@endsection
-@section('content')
-    <form class="form-horizontal" role="form" action="{{ url('type/posttype', $data->id) }}" method="post"
+<?php $__env->startSection('title', 'Post Type'); ?>
+<?php $__env->startSection('breadcrumb'); ?>
+    <a href="<?php echo e(route('type.posttype.index', Request::segment(2))); ?>" class="btn btn-primary btn-sm">List</a>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <form class="form-horizontal" role="form" action="<?php echo e(url('type/posttype', $data->id)); ?>" method="post"
         enctype="multipart/form-data">
-        {{ csrf_field() }}
+        <?php echo e(csrf_field()); ?>
+
         <input type="hidden" name="_method" value="PUT" />
         <div class="col-md-9">
             <!-- Input Fields -->
@@ -20,7 +20,7 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <input type="text" id="post_type" name="post_type" class="form-control" placeholder=""
-                                    value="{{$data->post_type}}" />
+                                    value="<?php echo e($data->post_type); ?>" />
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <label for="inputStandard" class="col-lg-3 control-label"> Uri</label>
                         <div class="col-lg-8">
                             <div class="bs-component">
-                                <input type="text" name="uri" class="form-control" placeholder="" value="{{$data->uri}}"
+                                <input type="text" name="uri" class="form-control" placeholder="" value="<?php echo e($data->uri); ?>"
                                     readonly />
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <input type="text" id="sub_title" name="sub_title" class="form-control" placeholder=""
-                                    value="{{$data->sub_title}}" />
+                                    value="<?php echo e($data->sub_title); ?>" />
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <input type="text" name="associated_title" class="form-control" placeholder=""
-                                    value="{{$data->associated_title}}" />
+                                    value="<?php echo e($data->associated_title); ?>" />
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <input type="text" id="ordering" name="ordering" class="form-control"
-                                    value="{{ $data->ordering }}" />
+                                    value="<?php echo e($data->ordering); ?>" />
                             </div>
                         </div>
                     </div>
@@ -66,20 +66,20 @@
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <select name="is_menu" class="form-control input-sm">
-                                    <option value="0" {{($data->is_menu == '0') ? 'selected' : ''}}> No </option>
-                                    <option value="1" {{($data->is_menu == '1') ? 'selected' : ''}}> Yes </option>
+                                    <option value="0" <?php echo e(($data->is_menu == '0') ? 'selected' : ''); ?>> No </option>
+                                    <option value="1" <?php echo e(($data->is_menu == '1') ? 'selected' : ''); ?>> Yes </option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <!--<input type="hidden" name="is_menu" value="{{$data->is_menu}}">-->
+                    <!--<input type="hidden" name="is_menu" value="<?php echo e($data->is_menu); ?>">-->
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label" for="textArea3"> Content </label>
                         <div class="col-lg-8">
                             <div class="bs-component">
                                 <textarea class="my-editor form-control" id="editor2" name="content"
-                                    rows="3"> {{ $data->content }}</textarea>
+                                    rows="3"> <?php echo e($data->content); ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -112,15 +112,15 @@
                     <label class="field select">
                         <select id="nav_type" name="nav_type" required>
                             <option value="company"
-                                {{ old('nav_type', $data->nav_type ?? '') == 'company' ? 'selected' : '' }}>
+                                <?php echo e(old('nav_type', $data->nav_type ?? '') == 'company' ? 'selected' : ''); ?>>
                                 Company & Information
                             </option>
                             <option value="support"
-                                {{ old('nav_type', $data->nav_type ?? '') == 'support' ? 'selected' : '' }}>
+                                <?php echo e(old('nav_type', $data->nav_type ?? '') == 'support' ? 'selected' : ''); ?>>
                                 Services & Support
                             </option>
                             <option value="media"
-                                {{ old('nav_type', $data->nav_type ?? '') == 'media' ? 'selected' : '' }}>
+                                <?php echo e(old('nav_type', $data->nav_type ?? '') == 'media' ? 'selected' : ''); ?>>
                                 Media & Team
                             </option>
                         </select>
@@ -131,10 +131,10 @@
                 <div class="sid_bvijay mb10">
                     <label class="field select">
                         <select id="template" name="template">
-                            @foreach($templates as $key => $template)
-                                <option value="{{$key}}" {{ ($template == $data->template) ? 'selected' : '' }}>
-                                    {{ ucfirst($template) }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $templates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($key); ?>" <?php echo e(($template == $data->template) ? 'selected' : ''); ?>>
+                                    <?php echo e(ucfirst($template)); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         <i class="arrow"></i>
                     </label>
@@ -143,14 +143,14 @@
                     <h4> Image </h4>
                     <div class="hd_show_con">
                         <div id="xedit-demo">
-                            @if($data->banner)
-                                <span class="thumb_id{{$data->id}}">
-                                    <a href="#{{$data->id}}" class="imagedelete">X</a>
-                                    <img src="{{asset(env('PUBLIC_PATH') . 'uploads/original/' . $data->banner)}}" width="150"
-                                        class="responsive" alt="{{ $data->post_type}}" />
+                            <?php if($data->banner): ?>
+                                <span class="thumb_id<?php echo e($data->id); ?>">
+                                    <a href="#<?php echo e($data->id); ?>" class="imagedelete">X</a>
+                                    <img src="<?php echo e(asset(env('PUBLIC_PATH') . 'uploads/original/' . $data->banner)); ?>" width="150"
+                                        class="responsive" alt="<?php echo e($data->post_type); ?>" />
                                 </span>
                                 <hr>
-                            @endif
+                            <?php endif; ?>
                             <input type="file" name="banner" />
                         </div>
                     </div>
@@ -159,8 +159,8 @@
         </div>
 
     </form>
-@endsection
-@section('scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
     <script type="text/javascript">
 
         $('.imagedelete').on('click', function (e) {
@@ -171,7 +171,7 @@
             var id = str.slice(1);
             $.ajax({
                 type: 'delete',
-                url: "{{url('delete_posttype_thumb') . '/'}}" + id,
+                url: "<?php echo e(url('delete_posttype_thumb') . '/'); ?>" + id,
                 data: { _token: csrf },
                 success: function (data) {
                     $('span.thumb_id' + id).remove();
@@ -193,4 +193,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Lhakpa_june\resources\views/admin/post-type/edit.blade.php ENDPATH**/ ?>

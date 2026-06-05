@@ -13,50 +13,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="<?php echo e(asset('theme-assets/js/uikit.js')); ?>"></script>
     <script src="https://kit.fontawesome.com/7254a5967d.js" crossorigin="anonymous"></script>
-        <!---------------- Sharing starts --------------------->
-     <meta property="og:title" content="<?php echo $__env->yieldContent('title'); ?>" />
+    <!---------------- Sharing starts --------------------->
+    <meta property="og:title" content="<?php echo $__env->yieldContent('title'); ?>" />
     <meta property="og:url" content="" />
     <meta property="og:description" content="<?php echo $__env->yieldContent('brief'); ?>" />
     <?php if(trim($__env->yieldContent('thumbnail'))): ?>
-	<meta property="og:image" content="<?php echo e(asset('uploads/original/' )); ?>/<?php echo $__env->yieldContent('thumbnail'); ?>" />
-	<?php else: ?>
-	<meta property="og:image" content="<?php echo e(asset('theme-assets/images/logo.svg')); ?>" />
-	<?php endif; ?>
-   <meta property="og:type" content="article" />
-	<meta property="og:site_name" content="<?php echo e($setting->site_name); ?>" />
-	<meta property="twitter:card" content="" />
-	<meta property="twitter:site" content="" />
-	<meta property="twitter:title" content="<?php echo $__env->yieldContent('title'); ?>" />
-	<meta property="twitter:description" content="<?php echo $__env->yieldContent('brief'); ?>" />
-   <?php if(trim($__env->yieldContent('thumbnail'))): ?>
-	<meta property="twitter:image" content="<?php echo e(asset('uploads/original/' )); ?>/<?php echo $__env->yieldContent('thumbnail'); ?>" />
-	<?php else: ?>
-	<meta property="twitter:image" content="<?php echo e(asset('theme-assets/images/logo.svg')); ?>" />
-	<?php endif; ?>
-   <meta property="twitter:url" content="" />
-	<meta name="twitter:image:alt" content="" />
+    <meta property="og:image" content="<?php echo e(asset('uploads/original/' )); ?>/<?php echo $__env->yieldContent('thumbnail'); ?>" />
+    <?php else: ?>
+    <meta property="og:image" content="<?php echo e(asset('theme-assets/images/logo.svg')); ?>" />
+    <?php endif; ?>
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="<?php echo e($setting->site_name); ?>" />
+    <meta property="twitter:card" content="" />
+    <meta property="twitter:site" content="" />
+    <meta property="twitter:title" content="<?php echo $__env->yieldContent('title'); ?>" />
+    <meta property="twitter:description" content="<?php echo $__env->yieldContent('brief'); ?>" />
+    <?php if(trim($__env->yieldContent('thumbnail'))): ?>
+    <meta property="twitter:image" content="<?php echo e(asset('uploads/original/' )); ?>/<?php echo $__env->yieldContent('thumbnail'); ?>" />
+    <?php else: ?>
+    <meta property="twitter:image" content="<?php echo e(asset('theme-assets/images/logo.svg')); ?>" />
+    <?php endif; ?>
+    <meta property="twitter:url" content="" />
+    <meta name="twitter:image:alt" content="" />
     <!---------------- Sharing ends --------------------->
     <!---------------- Fav icon starts --------------------->
-    	<link rel="icon" type="image/x-icon" href="<?php echo e(asset('assets/favicon/favicon.ico')); ?>">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('assets/favicon/favicon-32x32.png')); ?>">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset('assets/favicon/favicon-16x16.png')); ?>">
-        <link rel="icon" type="image/png" sizes="192x192" href="<?php echo e(asset('assets/favicon/android-chrome-192x192.png')); ?>">
-        <link rel="icon" type="image/png" sizes="512x512" href="<?php echo e(asset('assets/favicon/android-chrome-512x512.png')); ?>">
-        <link rel="apple-touch-icon" href="<?php echo e(asset('assets/favicon/apple-touch-icon.png')); ?>">
-        <link rel="manifest" href="<?php echo e(asset('assets/favicon/site.webmanifest')); ?>">
-        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <link rel="icon" type="image/x-icon" href="<?php echo e(asset('assets/favicon/favicon.ico')); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('assets/favicon/favicon-32x32.png')); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset('assets/favicon/favicon-16x16.png')); ?>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?php echo e(asset('assets/favicon/android-chrome-192x192.png')); ?>">
+    <link rel="icon" type="image/png" sizes="512x512" href="<?php echo e(asset('assets/favicon/android-chrome-512x512.png')); ?>">
+    <link rel="apple-touch-icon" href="<?php echo e(asset('assets/favicon/apple-touch-icon.png')); ?>">
+    <link rel="manifest" href="<?php echo e(asset('assets/favicon/site.webmanifest')); ?>">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     <!---------------- Fav icon stops ----------------------->
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=693911e57d1fcb1f4b61145f&product=sop' async='async'></script>
+    <script type='text/javascript'
+        src='https://platform-api.sharethis.com/js/sharethis.js#property=693911e57d1fcb1f4b61145f&product=sop'
+        async='async'></script>
     <style>
         /********* google captcha *********/
-      .grecaptcha-badge{
-          display: none!important;
-      }
+        .grecaptcha-badge {
+            display: none !important;
+        }
     </style>
     <style>
         /* Custom notification styles */
@@ -64,11 +67,13 @@
             background-color: #ffebee !important;
             color: #c62828 !important;
             border-left: 4px solid #d32f2f !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         }
+
         .uk-notification-message-danger .uk-notification-close {
             color: #c62828 !important;
         }
+
         .uk-notification-message-danger:hover {
             background-color: #ffcdd2 !important;
         }
@@ -77,11 +82,13 @@
             background-color: #e8f5e9 !important;
             color: #2e7d32 !important;
             border-left: 4px solid #4caf50 !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         }
+
         .uk-notification-message-success .uk-notification-close {
             color: #2e7d32 !important;
         }
+
         .uk-notification-message-success:hover {
             background-color: #c8e6c9 !important;
         }
@@ -90,11 +97,13 @@
             background-color: #fff3e0 !important;
             color: #ff9800 !important;
             border-left: 4px solid #ffb74d !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         }
+
         .uk-notification-message-warning .uk-notification-close {
             color: #ff9800 !important;
         }
+
         .uk-notification-message-warning:hover {
             background-color: #ffe0b2 !important;
         }
@@ -103,49 +112,53 @@
             background-color: #e3f2fd !important;
             color: #1976d2 !important;
             border-left: 4px solid #64b5f6 !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         }
+
         .uk-notification-message-info .uk-notification-close {
             color: #1976d2 !important;
         }
+
         .uk-notification-message-info:hover {
             background-color: #bbdefb !important;
         }
 
         /* Ensure the notification container is positioned correctly */
         .uk-notification {
-            top: 10px !important; /* Adjust as needed */
-            right: 10px !important; /* Adjust as needed */
+            top: 10px !important;
+            /* Adjust as needed */
+            right: 10px !important;
+            /* Adjust as needed */
             z-index: 100000 !important;
-        }  
+        }
     </style>
 </head>
 
 <body>
-    
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69390ab6dac5651980f2a03f/1jc3d3met';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69390ab6dac5651980f2a03f/1jc3d3met';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 
     <?php if($errors->any()): ?>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    setTimeout(function() {
+                    setTimeout(function () {
                         showNotification("<?php echo e($error); ?>", 'danger');
                     }, <?php echo e($index * 300); ?>); // 300ms delay between each notification
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            });
+                });
 
             function showNotification(message, status) {
                 UIkit.notification({
@@ -160,7 +173,7 @@
     <?php endif; ?>
     <?php if(session('success') || session('warning') || session('info') || session('error')): ?>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 <?php if(session('success')): ?>
                     showNotification("<?php echo e(session('success')); ?>", 'success');
                 <?php endif; ?>
@@ -173,7 +186,7 @@
                 <?php if(session('error')): ?>
                     showNotification("<?php echo e(session('error')); ?>", 'danger');
                 <?php endif; ?>
-            });
+                });
 
             function showNotification(message, status) {
                 UIkit.notification({
@@ -191,488 +204,768 @@
             <!-- top nav menu -->
             <div class="uk-visible@l uk-container uk-white " style="position:relative;z-index:1000;">
                 <div class=" uk-flex uk-flex-middle uk-grid-collapse uk-grid uk-margin-top uk-top-nav">
-                  
+
                     <div class="uk-width-auto@m uk-flex">
-                        <a href="<?php echo e(url('/')); ?>"> <img src="<?php echo e(asset('theme-assets/img/white-lhakpa.png')); ?>" width="200" alt=""></a>
+                        <a href="<?php echo e(url('/')); ?>"> <img src="<?php echo e(asset('theme-assets/img/white-lhakpa.png')); ?>" width="200"
+                                alt=""></a>
                         <!--<h2  class="uk-dark text-container" style="font-size: 20px; color: white; margin-top: 22px; margin-left: 19px;">-->
                         <!--    Your Travel Partner in Nepal-->
                         <!--</h2>-->
-                        <img src="<?php echo e(asset('theme-assets/img/Final-Change-white.gif')); ?>"  alt="" style="height: 76px;width: auto; margin-left:15px;">
+                        <img src="<?php echo e(asset('theme-assets/img/Final-Change-white.gif')); ?>" alt=""
+                            style="height: 76px;width: auto; margin-left:15px;">
                     </div>
                     <div class="uk-width-expand@m">
                         <ul class="uk-flex uk-flex-right uk-topnavbar-ul uk-margin-bottom">
                             <?php if($news): ?>
-                                <li class="border-right"><a href="<?php echo e(route('page.posttype_detail',$news->uri)); ?>"><?php echo e($news->post_type); ?></a></li>
+                                <li class="border-right"><a
+                                        href="<?php echo e(route('page.posttype_detail', $news->uri)); ?>"><?php echo e($news->post_type); ?></a></li>
                             <?php endif; ?>
                             <?php if($women): ?>
-                                <li class="border-right"><a href="<?php echo e(route('page.posttype_detail',$women->uri)); ?>"><?php echo e($women->post_type); ?></a></li>
+                                <li class="border-right"><a
+                                        href="<?php echo e(route('page.posttype_detail', $women->uri)); ?>"><?php echo e($women->post_type); ?></a>
+                                </li>
                             <?php endif; ?>
                             <?php if($tourism): ?>
-                                <li class="border-right"><a href="<?php echo e(route('page.posttype_detail',$tourism->uri)); ?>"><?php echo e($tourism->post_type); ?></a></li>
+                                <li class="border-right"><a
+                                        href="<?php echo e(route('page.posttype_detail', $tourism->uri)); ?>"><?php echo e($tourism->post_type); ?></a>
+                                </li>
                             <?php endif; ?>
                         </ul>
-                        <ul class="uk-flex uk-flex-right uk-topnavbar-ul">  
+                        <ul class="uk-flex uk-flex-right uk-topnavbar-ul">
                             
                             <li class="border-right">
-                                <a href="<?php echo e(route('page.posttype_detail',$contact_us->uri)); ?>">
+                                <a href="<?php echo e(route('page.posttype_detail', $contact_us->uri)); ?>">
                                     <i class="fa-solid fa-phone uk-margin-small-right"></i> Contact Us
                                 </a>
                             </li>
                             <li class="border-right">
                                 <?php if(Auth::check()): ?>
-                                <a href="<?php echo e(route('user-wishlist')); ?>">
-                                    <i class="fa-solid fa-heart uk-margin-small-right"></i>Favourites [<?php echo e(Auth::user()->wishlists->count()); ?>]
-                                </a>
+                                    <a href="<?php echo e(route('user-wishlist')); ?>">
+                                        <i class="fa-solid fa-heart uk-margin-small-right"></i>Favourites
+                                        [<?php echo e(Auth::user()->wishlists->count()); ?>]
+                                    </a>
                                 <?php else: ?>
-                                <a href="<?php echo e(route('user-wishlist')); ?>">
-                                    <i class="fa-solid fa-heart uk-margin-small-right"></i>My Favourite 
-                                </a>
+                                    <a href="<?php echo e(route('user-wishlist')); ?>">
+                                        <i class="fa-solid fa-heart uk-margin-small-right"></i>My Favourite
+                                    </a>
                                 <?php endif; ?>
-                             </li>
-                             <?php if(Auth::check() && Auth::user()->roles=='user'): ?>
-                             <li class="border-right">
-                                <a href="<?php echo e(route('user-profile')); ?>" >
-                                    <i class="fa-solid fa-user uk-margin-small-right"></i>Hi, <?php echo e(explode(' ', Auth::user()->name)[0]); ?>
+                            </li>
+                            <?php if(Auth::check() && Auth::user()->roles == 'user'): ?>
+                                <li class="border-right">
+                                    <a href="<?php echo e(route('user-profile')); ?>">
+                                        <i class="fa-solid fa-user uk-margin-small-right"></i>Hi,
+                                        <?php echo e(explode(' ', Auth::user()->name)[0]); ?>
 
-                                </a>
-                             </li>
-                             <?php else: ?>
-                             <li class="border-right">
-                                <!--<a href="#modal-form" uk-toggle>-->
-                                <!--    <i class="fa-solid fa-user uk-margin-small-right"></i>User Login-->
-                                <!--</a>-->
-                                <a href="<?php echo e(route('login.form')); ?>" >
-                                    <i class="fa-solid fa-user uk-margin-small-right"></i>My account
-                                </a>
-                             </li>
-                             <?php endif; ?>
-                            <li class="uk-margin-small-left">
-                            <?php if($plan_trip): ?>
-                                <a href="<?php echo e(route('page.posttype_detail',$plan_trip->uri)); ?>" class="inquiry-btn"><?php echo e($plan_trip->post_type); ?></a>
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li class="border-right">
+                                    <!--<a href="#modal-form" uk-toggle>-->
+                                    <!--    <i class="fa-solid fa-user uk-margin-small-right"></i>User Login-->
+                                    <!--</a>-->
+                                    <a href="<?php echo e(route('login.form')); ?>">
+                                        <i class="fa-solid fa-user uk-margin-small-right"></i>My account
+                                    </a>
+                                </li>
                             <?php endif; ?>
+                            <li class="uk-margin-small-left">
+                                <?php if($plan_trip): ?>
+                                    <a href="<?php echo e(route('page.posttype_detail', $plan_trip->uri)); ?>"
+                                        class="inquiry-btn"><?php echo e($plan_trip->post_type); ?></a>
+                                <?php endif; ?>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- top nav menu -->
-            <div style="position:relative;z-index:1000;"  uk-sticky="top: 0; animation: uk-animation-slide-top; cls-active: uk-navbar-sticky; sel-target: .uk-navbar-container;">
+            <div style="position:relative;z-index:1000;"
+                uk-sticky="top: 0; animation: uk-animation-slide-top; cls-active: uk-navbar-sticky; sel-target: .uk-navbar-container;">
                 <!-- Main Menu -->
                 <div class="uk-visible@l uk-main-header-transparent uk-navbar-container  uk-navbar-transparent">
                     <div class="uk-container">
                         <nav class="uk-navbar d-flex uk-flex-middle" uk-navbar="dropbar: true; uk-dropbar-top">
                             <div class="uk-navbar-left">
-                            
-                                <a href="<?php echo e(url('/')); ?>" class="uk-logo-dark"> <img src="<?php echo e(asset('theme-assets/img/green-lhakpa.png')); ?>" width="180" alt=""></a>
-                             
+                                <a href="<?php echo e(url('/')); ?>" class="uk-logo-dark">
+                                    <img src="<?php echo e(asset('theme-assets/img/green-lhakpa.png')); ?>" width="180" alt="">
+                                </a>
                             </div>
                             <div class="uk-navbar-right">
                                 <ul class="uk-navbar-nav uk-position-relative">
                                     <li>
-                                        <a> Company <span uk-navbar-parent-icon></span></a>
-                                        <div class="uk-dropbar uk-dropbar-top uk-pattern-bg" uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
-                                            <div class="uk-position-relative uk-visible-toggle uk-light uk-container " tabindex="-1" uk-slider="autoplay: true; autoplay-interval:1500;">
-                                                <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-4@m uk-grid">
-                                                    <?php $__currentLoopData = $navigations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <a href="#">Company <span uk-navbar-parent-icon></span></a>
+
+                                        <div class="uk-dropbar uk-dropbar-top"
+                                            uk-drop="boundary:!.uk-main-header-transparent; stretch: x; animation: reveal-top; delay-hide: 10; duration: 700;">
+
+                                            <div class="uk-container p-0">
+
+                                                <div uk-grid class="uk-grid-small">
+
+                                                    
+                                                    <ul class="tab-nav uk-padding-menu uk-tab-left uk-margin-medium-right border-0"
+                                                        uk-tab="connect: #company-switcher">
+
+                                                        <li>
+                                                            <a href="#">Company & Information</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#">Services & Support</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#">Media & Team</a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                    
+                                                    <div id="company-switcher" class="uk-switcher uk-width-expand@m">
+
+                                                        
                                                         <div>
-                                                            <a href="<?php echo e(route('page.posttype_detail',$nav->uri)); ?>">
-                                                                <div class="uk-list-shine uk-media-205 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle" href="detail.php">
-                                                                    <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque" alt="<?php echo e($nav->post_type); ?>" src="<?php echo e($nav->banner ? asset('uploads/original/'.$nav->banner) : asset('theme-assets/img/mountain/mountain1.jpeg')); ?>" />
-                                                                    <div class="uk-overlay-banner uk-heading-overlay uk-position-cover"></div>
-                                                                    <div class="uk-overlay-primary uk-inner-overlay2 uk-position-cover"></div>
-                                                                    <div class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
-                                                                        <h2 class="uk-secondary mb-18"><?php echo e($nav->post_type); ?></h2>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
+                                                            <ul class="uk-list uk-highlight uk-navbar-list">
+                                                                <?php $__currentLoopData = $navigations->where('nav_type', 'company'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <li>
+                                                                        <a href="<?php echo e(route('page.posttype_detail', $nav->uri)); ?>">
+                                                                            <?php echo e($nav->post_type); ?>
+
+                                                                        </a>
+                                                                    </li>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            </ul>
                                                         </div>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                                        
+                                                        <div>
+                                                            <ul class="uk-list uk-highlight uk-navbar-list">
+                                                                <?php $__currentLoopData = $navigations->where('nav_type', 'support'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <li>
+                                                                        <a href="<?php echo e(route('page.posttype_detail', $nav->uri)); ?>">
+                                                                            <?php echo e($nav->post_type); ?>
+
+                                                                        </a>
+                                                                    </li>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            </ul>
+                                                        </div>
+
+                                                        
+                                                        <div>
+                                                            <ul class="uk-list uk-highlight uk-navbar-list">
+                                                                <?php $__currentLoopData = $navigations->where('nav_type', 'media'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <li>
+                                                                        <a href="<?php echo e(route('page.posttype_detail', $nav->uri)); ?>">
+                                                                            <?php echo e($nav->post_type); ?>
+
+                                                                        </a>
+                                                                    </li>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+
+                                                    
+                                                    <div class="uk-width-expand uk-padding-remove">
+
+                                                        <div class="uk-child-width-1-2@m uk-grid-small" uk-grid>
+
+                                                            <?php $__currentLoopData = $navigations->take(2); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                                <div>
+
+                                                                    <div class="uk-media-280 uk-activities uk-position-relative uk-display-block">
+
+                                                                        <a href="<?php echo e(route('page.posttype_detail', $nav->uri)); ?>"
+                                                                            class="uk-inline uk-transition-toggle uk-link-toggle uk-height-1-1">
+
+                                                                            <img src="<?php echo e($nav->banner ? asset('uploads/original/' . $nav->banner) : asset('theme-assets/img/mountain/mountain1.jpeg')); ?>"
+                                                                                class="uk-width-1-1 uk-transition-scale-up uk-transition-opaque"
+                                                                                alt="<?php echo e($nav->post_type); ?>">
+
+                                                                            <div
+                                                                                class="uk-overlay-primary uk-banner-overlay uk-position-cover">
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="uk-overlay uk-position-center uk-light uk-text-center uk-title-font">
+
+                                                                                <h6
+                                                                                    class="uk-underline uk-text-uppercase uk-margin-remove">
+                                                                                    Explore
+                                                                                    <i
+                                                                                        class="fa-solid fa-circle-arrow-right uk-margin-small-left"></i>
+                                                                                </h6>
+
+                                                                                <h3
+                                                                                    class="uk-text-uppercase uk-margin-small-top">
+                                                                                    <?php echo e($nav->post_type); ?>
+
+                                                                                </h3>
+
+                                                                            </div>
+
+                                                                        </a>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
-                                                <div class="uk-flex uk-flex-middle uk-flex-center uk-margin uk-margin-remove-bottom">
-                                                    <a class="uk-nav-slider-btn prev-btn" href="#" uk-icon="icon:arrow-left; ratio: 1.5" uk-slider-item="previous" style="padding: 9px 10px !important;"></a>
-                                                    <a class="uk-nav-slider-btn next-btn" href="#" uk-icon="icon:arrow-right; ratio: 1.5" uk-slider-item="next" style="padding: 9px 10px !important;"></a>
-                                                </div>
+
                                             </div>
+
                                         </div>
                                     </li>
                                     <li>
-                                        <a>Destination <span uk-navbar-parent-icon></span></a>
-                                        <div class="uk-dropbar uk-dropbar-top" uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
-                                        <div class=" uk-container">
-                                            <div class="mega-border-top">
+                                        <a href="#">Destination <span uk-navbar-parent-icon></span></a>
+                                        <div class="uk-dropbar uk-dropbar-top"
+                                            uk-drop="boundary:!.uk-main-header-transparent; stretch: x; animation: reveal-top; delay-hide: 10; duration: 700;">
+                                            <div class="uk-container p-0">
                                                 <div uk-grid class="uk-grid-small">
-                                                    <ul class="tab-nav uk-mega-tab uk-padding-menu   uk-tab-left uk-margin-medium-right  " data-uk-tab="{connect:'.uk-switcher'}">
+                                                    
+                                                    <ul class="tab-nav uk-mega-tab uk-padding-menu uk-tab-left uk-margin-medium-right border-0"
+                                                        uk-tab="connect: #destination-switcher">
                                                         <?php $__currentLoopData = $trekking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trek): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <li> <a><?php echo e($trek->title); ?></a> </li>
+                                                            <li>
+                                                                <a href="#"><?php echo e(strtoupper($trek->title)); ?></a>
+                                                            </li>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </ul>
-                                                    <div class="uk-switcher uk-width-expand@m uk-padding-menu ">
-                                                        <!-- Annapurna Region -->
-                                                        <?php $__currentLoopData = $trekking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <div>
-                                                                <div class="uk-child-width-1-2@m uk-grid">
-                                                                    <div>
-                                                                        <div class="uk-title-fonts">
-                                                                            <h2 class="uk-secondary"><?php echo e($value->title); ?></h2>
-                                                                            <p class="uk-margin-bottom">
-                                                                                <?php echo e($value->excerpt); ?>
+                                                    
+                                                    <div id="destination-switcher" class="uk-switcher uk-width-expand@m">
+                                                        <?php $__currentLoopData = $trekking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php
+                                                                $allTrips = get_triplist($value->id)->take(10);
 
-                                                                            </p>
-                                                                            <a href="<?php echo e(route('trekking-list',$value->uri)); ?>" class="uk-btn uk-btn-secondary uk-margin-top">VIEW ALL PACKAGES</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="uk-child-width-1-2 uk-grid-small uk-grid">
-                                                                            <div>
-                                                                                <img src="<?php echo e(!empty($value->thumbnail) ? asset('uploads/icon/'.$value->thumbnail) : asset('theme-assets/img/mountain/mountain3.jpeg')); ?>" alt="<?php echo e($value->title); ?>" class="border uk-media-140 ">
-                                                                            </div>
-                                                                            <div>
-                                                                                <img src="<?php echo e(!empty($value->banner) ? asset('uploads/banners/'.$value->banner) : asset('theme-assets/img/mountain/mountain4.jpeg')); ?>" alt="<?php echo e($value->title); ?>" class="border uk-media-140">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="uk-margin-medium-top uk-child-width-1-3 uk-grid">
-                                                                    <?php
-                                                                        $tripList = get_triplist($value->id)->take(9)->toArray();
-                                                                        $tripChunks = array_chunk($tripList, 3); 
-                                                                    ?>
-                                                                    <?php $__currentLoopData = $tripChunks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <ul class="uk-list uk-highlight uk-navbar-list">
-                                                                            <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <li> <a href="<?php echo e(url('page/' . tripurl($item['uri']))); ?>"><?php echo e($item['trip_title']); ?></a>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        </ul>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                </div>
-                                                            </div>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a>Activities <span uk-navbar-parent-icon></span></a>
-                                    <div class="uk-dropbar uk-dropbar-top" uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
-                                        <div class="uk-container">
-                                            <div class="mega-border-top">
-                                                <div uk-grid class="uk-grid-small">
-                                                    <ul class="tab-nav uk-mega-tab uk-padding-menu   uk-tab-left uk-margin-medium-right  " data-uk-tab="{connect:'.uk-switcher'}">
-                                                        <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <li> <a><?php echo e($row->title); ?></a> </li>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                    <div class="uk-switcher uk-width-expand@m uk-padding-menu ">
-                                                        <!-- biking -->
-                                                        <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
-                                                                <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
-                                                                    <?php
-                                                                        $tripList = get_triplist($value->id)->toArray();
-                                                                    ?>
-                                                                    <?php $__currentLoopData = $tripList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                $featuredTrips = $allTrips->take(3);
+
+                                                                $remainingTrips = $allTrips->slice(3)->values();
+
+                                                                $half = ceil($remainingTrips->count() / 2);
+
+                                                                $leftTrips = $remainingTrips->slice(0, $half);
+
+                                                                $rightTrips = $remainingTrips->slice($half);
+                                                            ?>
+                                                            <div>
+
+                                                                
+                                                                <div class="uk-position-relative uk-child-width-1-2 uk-child-width-1-3@m" uk-grid>
+                                                                    <?php $__currentLoopData = $featuredTrips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <div>
-                                                                            <a href="<?php echo e(url('page/' . tripurl($item['uri']))); ?>">
-                                                                                <div class="uk-list-shine uk-media-205 uk-border-rounded uk-cover-container  uk-display-block uk-transition-toggle uk-link-toggle " href="detail.php">
-                                                                                    <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque uk-effect-1" alt="" src="<?php echo e($item['thumbnail'] ? asset('uploads/original/'.$item['thumbnail']) : asset('theme-assets/img/mountain/mountain1.jpeg')); ?> " />
-                                                                                    <div class="uk-overlay-banner  uk-position-cover uk-heading-overlay"></div>
-                                                                                    <div class="uk-overlay-primary uk-inner-overlay2 uk-position-cover"></div>
-                                                                                    <div class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font" style="padding:0 5px;">
-                                                                                        <h2 class="text-secondary mb-18"><?php echo e($item['trip_title']); ?></h2>
+                                                                            <a href="<?php echo e(url('page/' . tripurl($trip->uri))); ?>">
+                                                                                <div
+                                                                                    class="uk-list-shine uk-media-205 uk-border-rounded uk-cover-container uk-display-block uk-transition-toggle uk-link-toggle">
+                                                                                    <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque uk-effect-1"
+                                                                                        alt="<?php echo e($trip->trip_title); ?>"
+                                                                                        src="<?php echo e(!empty($trip->banner)
+                                                                                            ? asset('uploads/original/'.$trip->thumbnail)
+                                                                                            : asset('theme-assets/img/mountain/mountain1.jpeg')); ?>">
+                                                                                    <div
+                                                                                        class="uk-overlay-banner uk-position-cover uk-heading-overlay">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="uk-overlay-primary uk-inner-overlay2 uk-position-cover">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="uk-position-bottom-center uk-activities uk-text-center uk-title-font uk-padding">
+                                                                                        <h2 class="text-white mb-18">
+                                                                                            <?php echo e($trip->trip_title); ?>
+
+                                                                                        </h2>
                                                                                     </div>
                                                                                 </div>
                                                                             </a>
                                                                         </div>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 </div>
-                                                                <div class="uk-flex uk-flex-middle uk-flex-between uk-margin uk-margin-remove-bottom">
-                                                                    <a class="uk-nav-slider-btn prev-btn" href="#" uk-icon="icon:arrow-left; ratio: 1.5" uk-slider-item="previous" style="padding: 9px 10px !important;"></a>
-                                                                    <a href="<?php echo e(route('activity-list', $value->uri)); ?>" class=" uk-margin-top uk-margin-remove-bottom uk-btn uk-btn-secondary">View All <span uk-icon="icon:  arrow-right"></span></a>
-                                                                    <a class="uk-nav-slider-btn next-btn" href="#" uk-icon="icon:arrow-right; ratio: 1.5" uk-slider-item="next" style="padding: 9px 10px !important;"></a>
-                                                                </div>
+
+                                                                
+                                                                <?php if($remainingTrips->count() > 0): ?>
+                                                                    <div class="uk-position-relative">
+                                                                        <div class="scroll-area">
+                                                                            <div class="uk-margin-medium-top uk-child-width-1-2 px-6"
+                                                                                uk-grid>
+                                                                                
+                                                                                <div>
+                                                                                    <ul class="uk-list uk-highlight uk-navbar-list pl-10">
+                                                                                        <?php $__currentLoopData = $leftTrips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                            <li>
+                                                                                                <a href="<?php echo e(url('page/' . tripurl($trip->uri))); ?>">
+                                                                                                    <?php echo e($trip->trip_title); ?>
+
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                
+                                                                                <div>
+                                                                                    <ul class="uk-list uk-highlight uk-navbar-list pl-10">
+                                                                                        <?php $__currentLoopData = $rightTrips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                            <li>
+                                                                                                <a href="<?php echo e(url('page/' . tripurl($trip->uri))); ?>">
+                                                                                                    <?php echo e($trip->trip_title); ?>
+
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php endif; ?>
                                                             </div>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                        <!-- end of biking-->
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#"> Travelling Style <span uk-navbar-parent-icon></span></a>
-                                    <div class="uk-dropbar uk-dropbar-top uk-pattern-bg" uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
-                                        <div class="uk-position-relative uk-visible-toggle uk-light uk-container " tabindex="-1" uk-slider>
-                                            <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-4@m uk-grid" uk-height-match=".info-box">
-                                                <?php $__currentLoopData = $travels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $travel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <div>
-                                                        <a href="<?php echo e(route('travel-list', $travel->uri)); ?>">
-                                                            <div class="uk-list-shine uk-media-140 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle" href="detail.php">
-                                                                <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque" alt="<?php echo e($travel->title); ?>" src="<?php echo e($travel->thumbnail ? asset('uploads/icon/'.$travel->thumbnail) : asset('theme-assets/img/mountain/mountain3.jpeg')); ?>" />
-                                                                <div class="uk-overlay-banner uk-heading-overlay uk-position-cover "></div>
-                                                                 <div class="uk-overlay-primary uk-inner-overlay2 uk-position-cover"></div>
-                                                                <div class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
-                                                                    <h2 class="uk-secondary mb-18"><?php echo e($travel->title); ?></h2>
+                                    </li>
+                                    <li>
+                                        <a>Activities <span uk-navbar-parent-icon></span></a>
+                                        <div class="uk-dropbar uk-dropbar-top"
+                                            uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
+                                            <div class="uk-container">
+                                                <div class="mega-border-top">
+                                                    <div uk-grid class="uk-grid-small">
+                                                        <ul class="tab-nav uk-mega-tab uk-padding-menu   uk-tab-left uk-margin-medium-right  "
+                                                            data-uk-tab="{connect:'.uk-switcher'}">
+                                                            <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <li> <a><?php echo e($row->title); ?></a> </li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                        <div class="uk-switcher uk-width-expand@m uk-padding-menu ">
+                                                            <!-- biking -->
+                                                            <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <div class="uk-position-relative uk-visible-toggle uk-light"
+                                                                    tabindex="-1" uk-slider>
+                                                                    <div
+                                                                        class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+                                                                        <?php
+                                                                            $tripList = get_triplist($value->id)->toArray();
+                                                                        ?>
+                                                                        <?php $__currentLoopData = $tripList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <div>
+                                                                                <a
+                                                                                    href="<?php echo e(url('page/' . tripurl($item['uri']))); ?>">
+                                                                                    <div class="uk-list-shine uk-media-205 uk-border-rounded uk-cover-container  uk-display-block uk-transition-toggle uk-link-toggle "
+                                                                                        href="detail.php">
+                                                                                        <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque uk-effect-1"
+                                                                                            alt=""
+                                                                                            src="<?php echo e($item['thumbnail'] ? asset('uploads/original/' . $item['thumbnail']) : asset('theme-assets/img/mountain/mountain1.jpeg')); ?> " />
+                                                                                        <div
+                                                                                            class="uk-overlay-banner  uk-position-cover uk-heading-overlay">
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="uk-overlay-primary uk-inner-overlay2 uk-position-cover">
+                                                                                        </div>
+                                                                                        <div class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font"
+                                                                                            style="padding:0 5px;">
+                                                                                            <h2 class="text-secondary mb-18">
+                                                                                                <?php echo e($item['trip_title']); ?></h2>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-flex uk-flex-middle uk-flex-between uk-margin uk-margin-remove-bottom">
+                                                                        <a class="uk-nav-slider-btn prev-btn" href="#"
+                                                                            uk-icon="icon:arrow-left; ratio: 1.5"
+                                                                            uk-slider-item="previous"
+                                                                            style="padding: 9px 10px !important;"></a>
+                                                                        <a href="<?php echo e(route('activity-list', $value->uri)); ?>"
+                                                                            class=" uk-margin-top uk-margin-remove-bottom uk-btn uk-btn-secondary">View
+                                                                            All <span
+                                                                                uk-icon="icon:  arrow-right"></span></a>
+                                                                        <a class="uk-nav-slider-btn next-btn" href="#"
+                                                                            uk-icon="icon:arrow-right; ratio: 1.5"
+                                                                            uk-slider-item="next"
+                                                                            style="padding: 9px 10px !important;"></a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="info-box uk-contents">
-                                                                <p ><?php echo e($travel->excerpt); ?> </p>
-                                                            </div>
-                                                        </a>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            <!-- end of biking-->
+                                                        </div>
                                                     </div>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                <?php if($your_group): ?>
-                                                    <div>
-                                                        <a href="<?php echo e(route('page.posttype_detail',$your_group->uri)); ?>">
-                                                            <div class="uk-list-shine uk-media-140 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle" href="detail.php">
-                                                                <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque" alt="<?php echo e($your_group->post_type); ?>" src="<?php echo e($your_group->banner ? asset('uploads/original/'.$your_group->banner) : asset('theme-assets/img/mountain/mountain8.jpeg')); ?>" />
-                                                                <div class="uk-overlay-banner uk-heading-overlay uk-position-cover"></div>
-                                                                 <div class="uk-overlay-primary uk-inner-overlay2 uk-position-cover"></div>
-                                                                <div class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
-                                                                    <h2 class="uk-secondary mb-18"><?php echo e($your_group->post_type); ?></h2>
-                                                                </div>
-                                                            </div>
-                                                            <div class="info-box uk-contents">
-                                                                <?php echo $your_group->content; ?>
-
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="uk-flex uk-flex-middle uk-flex-center uk-margin uk-margin-remove-bottom">
-                                                <a class="uk-nav-slider-btn prev-btn" href="#" uk-icon="icon:arrow-left; ratio: 1.5" uk-slider-item="previous" style="padding: 9px 10px !important;"></a>
-                                                <a class="uk-nav-slider-btn next-btn" href="#" uk-icon="icon:arrow-right; ratio: 1.5" uk-slider-item="next" style="padding: 9px 10px !important;"></a>
+                                                </div>
                                             </div>
                                         </div>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Travelling Style <span uk-navbar-parent-icon></span></a>
+                                        <div class="uk-dropbar uk-dropbar-top uk-pattern-bg"
+                                            uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
+                                            <div class="uk-position-relative uk-visible-toggle uk-light uk-container "
+                                                tabindex="-1" uk-slider>
+                                                <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-4@m uk-grid"
+                                                    uk-height-match=".info-box">
+                                                    <?php $__currentLoopData = $travels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $travel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <div>
+                                                            <a href="<?php echo e(route('travel-list', $travel->uri)); ?>">
+                                                                <div class="uk-list-shine uk-media-140 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle"
+                                                                    href="detail.php">
+                                                                    <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque"
+                                                                        alt="<?php echo e($travel->title); ?>"
+                                                                        src="<?php echo e($travel->thumbnail ? asset('uploads/icon/' . $travel->thumbnail) : asset('theme-assets/img/mountain/mountain3.jpeg')); ?>" />
+                                                                    <div
+                                                                        class="uk-overlay-banner uk-heading-overlay uk-position-cover ">
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-overlay-primary uk-inner-overlay2 uk-position-cover">
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
+                                                                        <h2 class="uk-secondary mb-18"><?php echo e($travel->title); ?>
+
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-box uk-contents">
+                                                                    <p><?php echo e($travel->excerpt); ?> </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($your_group): ?>
+                                                        <div>
+                                                            <a href="<?php echo e(route('page.posttype_detail', $your_group->uri)); ?>">
+                                                                <div class="uk-list-shine uk-media-140 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle"
+                                                                    href="detail.php">
+                                                                    <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque"
+                                                                        alt="<?php echo e($your_group->post_type); ?>"
+                                                                        src="<?php echo e($your_group->banner ? asset('uploads/original/' . $your_group->banner) : asset('theme-assets/img/mountain/mountain8.jpeg')); ?>" />
+                                                                    <div
+                                                                        class="uk-overlay-banner uk-heading-overlay uk-position-cover">
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-overlay-primary uk-inner-overlay2 uk-position-cover">
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
+                                                                        <h2 class="uk-secondary mb-18">
+                                                                            <?php echo e($your_group->post_type); ?></h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-box uk-contents">
+                                                                    <?php echo $your_group->content; ?>
+
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div
+                                                    class="uk-flex uk-flex-middle uk-flex-center uk-margin uk-margin-remove-bottom">
+                                                    <a class="uk-nav-slider-btn prev-btn" href="#"
+                                                        uk-icon="icon:arrow-left; ratio: 1.5" uk-slider-item="previous"
+                                                        style="padding: 9px 10px !important;"></a>
+                                                    <a class="uk-nav-slider-btn next-btn" href="#"
+                                                        uk-icon="icon:arrow-right; ratio: 1.5" uk-slider-item="next"
+                                                        style="padding: 9px 10px !important;"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a>Expedition <span uk-navbar-parent-icon></span></a>
+                                        <div class="uk-dropbar uk-dropbar-top"
+                                            uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
+                                            <div class=" uk-container">
+                                                <div class="mega-border-top">
+                                                    <div uk-grid class="uk-grid-small">
+                                                        <ul class="tab-nav uk-mega-tab uk-padding-menu   uk-tab-left uk-margin-medium-right  "
+                                                            data-uk-tab="{connect:'.uk-switcher'}">
+                                                            <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <li> <a href=""><?php echo e($row->title); ?></a> </li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                        <div class="uk-switcher uk-width-expand@m uk-padding-menu ">
+                                                            <!-- Annapurna Region -->
+                                                            <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <div>
+                                                                    <div class="uk-child-width-1-2@m uk-grid">
+                                                                        <div>
+                                                                            <div class="uk-title-fonts">
+                                                                                <h2 class="uk-secondary"><?php echo e($value->title); ?>
+
+                                                                                </h2>
+                                                                                <p class="uk-margin-bottom">
+                                                                                    <?php echo e($value->excerpt); ?></p>
+                                                                                <a href="<?php echo e(route('expedition-list', $value->uri)); ?>"
+                                                                                    class="uk-btn uk-btn-secondary uk-margin-top">VIEW
+                                                                                    ALL PACKAGES</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div
+                                                                                class="uk-child-width-1-2 uk-grid-small uk-grid">
+                                                                                <div>
+                                                                                    <img src="<?php echo e(!empty($value->thumbnail) ? asset('uploads/icon/' . $value->thumbnail) : asset('theme-assets/img/mountain/mountain3.jpeg')); ?>"
+                                                                                        alt="" class="border uk-media-140">
+                                                                                </div>
+                                                                                <div>
+                                                                                    <img src="<?php echo e(!empty($value->banner) ? asset('uploads/banners/' . $value->banner) : asset('theme-assets/img/mountain/mountain4.jpeg')); ?>"
+                                                                                        alt="" class="border uk-media-140">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="uk-margin-medium-top uk-child-width-1-3 uk-grid">
+                                                                        <?php
+                                                                            $tripList = get_triplist($value->id)->take(9)->toArray();
+                                                                            $tripChunks = array_chunk($tripList, 3);
+                                                                        ?>
+
+                                                                        <?php $__currentLoopData = $tripChunks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <ul class="uk-list uk-highlight uk-navbar-list">
+                                                                                <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                    <li> <a
+                                                                                            href="<?php echo e(url('page/' . tripurl($item['uri']))); ?>"><?php echo e($item['trip_title']); ?></a>
+                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                            </ul>
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                    </div>
+                                                                </div>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- <li><a href="">Advanced Search</a></li> -->
+                                    <li class="uk-flex uk-flex-middle">
+                                        <form class="uk-search uk-search-default" action="<?php echo e(route('searchtrip')); ?>"
+                                            method="GET">
+                                            <input class="uk-search-input" type="search" name="query" id="search-input"
+                                                placeholder="Search" aria-label="Search" autocomplete="off">
+
+                                            <button type="submit" class="uk-search-icon-flip" uk-search-icon></button>
+
+                                            <ul id="search-results"
+                                                class="uk-list uk-dropdown uk-dropdown-bottom-left uk-width-large"
+                                                style="display: none; position: absolute; background: #fff; border: 1px solid #ccc; z-index: 1000;">
+                                            </ul>
+                                        </form>
+                                    </li>
+                                    <li class="uk-visible-wishlist">
+                                        <a href="<?php echo e(route('user-wishlist')); ?>" class="uk-flex uk-flex-center">
+                                            <i class="fa-solid fa-heart uk-margin-small-right"
+                                                style="font-size:23px;"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end main menu -->
+                <!-- mobile menu -->
+                <div class="uk-header-mobile uk-hidden@l " uk-header="">
+                    <div class="uk-navbar-container ">
+                        <div class="uk-container">
+                            <nav class="uk-navbar" uk-navbar="{&quot;container&quot;:&quot;.uk-header-mobile&quot;}">
+                                <div class="uk-navbar-left">
+                                    <a href="<?php echo e(url('/')); ?>" class="uk-logo uk-navbar-item"> <img
+                                            src="<?php echo e(asset('theme-assets/img/green-lhakpa.png')); ?>" alt=""
+                                            style="height:65px;"> </a>
+                                </div>
+                                <div class="uk-navbar-right" style="gap: 10px;">
+                                    <a href="#modal-search" uk-toggle><i
+                                            class="fa-solid fa-magnifying-glass uk-white f-20 uk-margin-small-right"></i></a>
+
+                                    <?php if(Auth::check()): ?>
+                                        <a href="<?php echo e(route('user-wishlist')); ?>">
+                                            <i
+                                                class="fa-solid fa-heart uk-white f-20 uk-margin-small-right"></i>[<?php echo e(Auth::user()->wishlists->count()); ?>]
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="<?php echo e(route('user-wishlist')); ?>">
+                                            <i class="fa-solid fa-heart uk-white f-20 uk-margin-small-right"></i>
+                                        </a>
+                                    <?php endif; ?>
+                                    <a href="#modal-form" uk-toggle><i
+                                            class="fa-solid fa-user uk-white f-20 uk-margin-small-right"></i></a>
+                                    <div id="modal-search" uk-modal>
+                                        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                            <form class="uk-search uk-search-default uk-width-1-1"
+                                                action="<?php echo e(route('searchtrip')); ?>" method="GET">
+                                                <input class="uk-search-input" name="query" id="search-input"
+                                                    placeholder="Search" aria-label="Search" autocomplete="off">
+                                                <button type="submit" class="uk-search-icon-flip"
+                                                    uk-search-icon></button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </li>
-                                <li>
-                                    <a>Expedition <span uk-navbar-parent-icon></span></a>
-                                    <div class="uk-dropbar uk-dropbar-top" uk-drop="boundary:!.uk-main-header-transparent; stretch: x; flip: false; animation: reveal-top; delay-hide: 10; duration: 700;">
-                                        <div class=" uk-container">
-                                            <div class="mega-border-top">
-                                                <div uk-grid class="uk-grid-small">
-                                                    <ul class="tab-nav uk-mega-tab uk-padding-menu   uk-tab-left uk-margin-medium-right  " data-uk-tab="{connect:'.uk-switcher'}">
-                                                        <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <li> <a href=""><?php echo e($row->title); ?></a> </li>
+                                    <a uk-toggle aria-label="Open Menu" href="#uk-dialog-mobile"
+                                        class="uk-navbar-toggle uk-navbar-toggle-animate" aria-expanded="false">
+                                        <div uk-navbar-toggle-icon class="uk-icon uk-navbar-toggle-icon"></div>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div id="uk-dialog-mobile" class="uk-dropbar uk-padding-remove"
+                        uk-drop="{&quot;clsDrop&quot;:&quot;uk-dropbar&quot;,&quot;flip&quot;:&quot;false&quot;,&quot;container&quot;:&quot;.uk-header-mobile&quot;,&quot;target-y&quot;:&quot;.uk-header-mobile .uk-navbar-container&quot;,&quot;mode&quot;:&quot;click&quot;,&quot;target-x&quot;:&quot;.uk-header-mobile .uk-navbar-container&quot;,&quot;stretch&quot;:true,&quot;bgScroll&quot;:&quot;false&quot;,&quot;animation&quot;:&quot;reveal-top&quot;,&quot;animateOut&quot;:true,&quot;duration&quot;:300,&quot;toggle&quot;:&quot;false&quot;}">
+                        <div class="uk-height-min-1-1 uk-flex uk-flex-column">
+                            <div class="uk-margin-auto-bottom">
+                                <div class="uk-grid uk-child-width-1-1 uk-grid-stack" uk-grid="">
+                                    <div>
+                                        <div class="uk-panel" id="module-menu-dialog-mobile">
+                                            <ul class="uk-nav uk-nav-primary  uk-nav-divider uk-nav-accordion uk-margin-top"
+                                                uk-nav="targets: > .js-accordion">
+                                                <li class="js-accordion uk-parent">
+                                                    <a href="" aria-expanded="false">
+                                                        Company <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub two-column-nav">
+                                                        <?php $__currentLoopData = $navigations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="<?php echo e(route('page.posttype_detail', $nav->uri)); ?>"
+                                                                    style="padding: 10px 6px;"><?php echo e($nav->post_type); ?></a></li>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </ul>
-                                                    <div class="uk-switcher uk-width-expand@m uk-padding-menu ">
-                                                        <!-- Annapurna Region -->
-                                                        <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <div>
-                                                                <div class="uk-child-width-1-2@m uk-grid">
-                                                                    <div>
-                                                                        <div class="uk-title-fonts">
-                                                                            <h2 class="uk-secondary"><?php echo e($value->title); ?></h2>
-                                                                            <p class="uk-margin-bottom"><?php echo e($value->excerpt); ?></p>
-                                                                            <a href="<?php echo e(route('expedition-list', $value->uri)); ?>" class="uk-btn uk-btn-secondary uk-margin-top">VIEW ALL PACKAGES</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="uk-child-width-1-2 uk-grid-small uk-grid">
-                                                                            <div>
-                                                                                <img src="<?php echo e(!empty($value->thumbnail) ? asset('uploads/icon/'.$value->thumbnail) : asset('theme-assets/img/mountain/mountain3.jpeg')); ?>" alt="" class="border uk-media-140">
-                                                                            </div>
-                                                                            <div>
-                                                                                <img src="<?php echo e(!empty($value->banner) ? asset('uploads/banners/'.$value->banner) : asset('theme-assets/img/mountain/mountain4.jpeg')); ?>" alt="" class="border uk-media-140">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="uk-margin-medium-top uk-child-width-1-3 uk-grid">
-                                                                    <?php
-                                                                        $tripList = get_triplist($value->id)->take(9)->toArray();
-                                                                        $tripChunks = array_chunk($tripList, 3); 
-                                                                    ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $tripChunks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <ul class="uk-list uk-highlight uk-navbar-list">
-                                                                            <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <li> <a href="<?php echo e(url('page/' . tripurl($item['uri']))); ?>"><?php echo e($item['trip_title']); ?></a>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        </ul>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                </div>
-                                                            </div>
+                                                </li>
+                                                <li class="js-accordion uk-parent">
+                                                    <a aria-expanded="false"> Destination
+                                                        <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub">
+                                                        <?php $__currentLoopData = $trekking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trek): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="<?php echo e(route('trekking-list', $trek->uri)); ?>"><span
+                                                                        uk-icon="icon:   arrow-right"></span><?php echo e($trek->title); ?></a>
+                                                            </li>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                    <!-- <li><a href="">Advanced Search</a></li> -->
-                        <li class="uk-flex uk-flex-middle">
-                            <form class="uk-search uk-search-default" action="<?php echo e(route('searchtrip')); ?>" method="GET" >
-                                <input class="uk-search-input" type="search" name="query" id="search-input" placeholder="Search" aria-label="Search" autocomplete="off">
-   
-                                <button type="submit" class="uk-search-icon-flip" uk-search-icon></button>
-
-                                <ul id="search-results" class="uk-list uk-dropdown uk-dropdown-bottom-left uk-width-large" style="display: none; position: absolute; background: #fff; border: 1px solid #ccc; z-index: 1000;">
-                                </ul>
-                            </form>
-                        </li>
-                        <li class="uk-visible-wishlist">
-                            <a href="<?php echo e(route('user-wishlist')); ?>" class="uk-flex uk-flex-center">
-                                <i class="fa-solid fa-heart uk-margin-small-right" style="font-size:23px;"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                </nav>
-            </div>
-        </div>
-        <!-- end main menu -->
-        <!-- mobile menu -->
-        <div class="uk-header-mobile uk-hidden@l " uk-header="">
-            <div class="uk-navbar-container ">
-                <div class="uk-container">
-                    <nav class="uk-navbar" uk-navbar="{&quot;container&quot;:&quot;.uk-header-mobile&quot;}">
-                        <div class="uk-navbar-left">
-                            <a href="<?php echo e(url('/')); ?>" class="uk-logo uk-navbar-item"> <img src="<?php echo e(asset('theme-assets/img/green-lhakpa.png')); ?>" alt="" style="height:65px;"> </a>
-                        </div>
-                        <div class="uk-navbar-right" style="gap: 10px;">
-                            <a href="#modal-search" uk-toggle><i class="fa-solid fa-magnifying-glass uk-white f-20 uk-margin-small-right"></i></a>
-                            
-                            <?php if(Auth::check()): ?>
-                                <a href="<?php echo e(route('user-wishlist')); ?>">
-                                    <i class="fa-solid fa-heart uk-white f-20 uk-margin-small-right"></i>[<?php echo e(Auth::user()->wishlists->count()); ?>]
-                                </a>
-                            <?php else: ?>
-                                <a href="<?php echo e(route('user-wishlist')); ?>">
-                                    <i class="fa-solid fa-heart uk-white f-20 uk-margin-small-right"></i>
-                                </a>
-                            <?php endif; ?>
-                            <a href="#modal-form" uk-toggle><i class="fa-solid fa-user uk-white f-20 uk-margin-small-right"></i></a>
-                            <div id="modal-search" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-                                    <form class="uk-search uk-search-default uk-width-1-1" action="<?php echo e(route('searchtrip')); ?>" method="GET" >
-                                        <input class="uk-search-input" name="query" id="search-input" placeholder="Search" aria-label="Search" autocomplete="off">
-                                        <button type="submit" class="uk-search-icon-flip" uk-search-icon></button>
-                                    </form>
-                                </div>
-                            </div>
-                            <a uk-toggle aria-label="Open Menu" href="#uk-dialog-mobile" class="uk-navbar-toggle uk-navbar-toggle-animate" aria-expanded="false">
-                                <div uk-navbar-toggle-icon class="uk-icon uk-navbar-toggle-icon"></div>
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div id="uk-dialog-mobile" class="uk-dropbar uk-padding-remove" uk-drop="{&quot;clsDrop&quot;:&quot;uk-dropbar&quot;,&quot;flip&quot;:&quot;false&quot;,&quot;container&quot;:&quot;.uk-header-mobile&quot;,&quot;target-y&quot;:&quot;.uk-header-mobile .uk-navbar-container&quot;,&quot;mode&quot;:&quot;click&quot;,&quot;target-x&quot;:&quot;.uk-header-mobile .uk-navbar-container&quot;,&quot;stretch&quot;:true,&quot;bgScroll&quot;:&quot;false&quot;,&quot;animation&quot;:&quot;reveal-top&quot;,&quot;animateOut&quot;:true,&quot;duration&quot;:300,&quot;toggle&quot;:&quot;false&quot;}">
-                <div class="uk-height-min-1-1 uk-flex uk-flex-column">
-                    <div class="uk-margin-auto-bottom">
-                        <div class="uk-grid uk-child-width-1-1 uk-grid-stack" uk-grid="">
-                            <div>
-                                <div class="uk-panel" id="module-menu-dialog-mobile">
-                                    <ul class="uk-nav uk-nav-primary  uk-nav-divider uk-nav-accordion uk-margin-top" uk-nav="targets: > .js-accordion">
-                                        <li class="js-accordion uk-parent">
-                                            <a href="" aria-expanded="false">
-                                                Company <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub two-column-nav">
-                                                <?php $__currentLoopData = $navigations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nav): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <li><a href="<?php echo e(route('page.posttype_detail',$nav->uri)); ?>" style="padding: 10px 6px;"><?php echo e($nav->post_type); ?></a></li>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </ul>
-                                        </li>
-                                        <li class="js-accordion uk-parent">
-                                            <a aria-expanded="false"> Destination
-                                                <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub">
-                                                <?php $__currentLoopData = $trekking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trek): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <li><a href="<?php echo e(route('trekking-list',$trek->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($trek->title); ?></a></li>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                <li><a href="<?php echo e(route('page.trekkinglist')); ?>">View All</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="js-accordion uk-parent">
-                                            <a aria-expanded="false">Expedition
-                                                <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub">
-                                                <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li><a href="<?php echo e(route('expedition-list', $row->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($row->title); ?></a></li>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                <li><a href="<?php echo e(route('page.expeditionlist')); ?>"> View All</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="js-accordion uk-parent">
-                                            <a aria-expanded="false"> Activities
-                                                <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub">
-                                                <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <li><a href="<?php echo e(route('trekking-list',$row->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($row->title); ?></a></li>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                <li><a href="<?php echo e(route('page.activitylist')); ?>">View All</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="js-accordion uk-parent">
-                                            <a aria-expanded="false"> Travelling Style
-                                                <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub">
-                                                <?php $__currentLoopData = $travels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $travel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <li><a href="<?php echo e(route('travel-list', $travel->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($travel->title); ?></a></li>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                <?php if($your_group): ?>
-                                                    <li><a href="<?php echo e(route('page.posttype_detail',$your_group->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($your_group->post_type); ?></a></li>
+                                                        <li><a href="<?php echo e(route('page.trekkinglist')); ?>">View All</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="js-accordion uk-parent">
+                                                    <a aria-expanded="false">Expedition
+                                                        <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub">
+                                                        <?php $__currentLoopData = $expedition; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="<?php echo e(route('expedition-list', $row->uri)); ?>"><span
+                                                                        uk-icon="icon:   arrow-right"></span><?php echo e($row->title); ?></a>
+                                                            </li>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <li><a href="<?php echo e(route('page.expeditionlist')); ?>"> View All</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="js-accordion uk-parent">
+                                                    <a aria-expanded="false"> Activities
+                                                        <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub">
+                                                        <?php $__currentLoopData = $activity; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="<?php echo e(route('trekking-list', $row->uri)); ?>"><span
+                                                                        uk-icon="icon:   arrow-right"></span><?php echo e($row->title); ?></a>
+                                                            </li>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <li><a href="<?php echo e(route('page.activitylist')); ?>">View All</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="js-accordion uk-parent">
+                                                    <a aria-expanded="false"> Travelling Style
+                                                        <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub">
+                                                        <?php $__currentLoopData = $travels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $travel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="<?php echo e(route('travel-list', $travel->uri)); ?>"><span
+                                                                        uk-icon="icon:   arrow-right"></span><?php echo e($travel->title); ?></a>
+                                                            </li>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php if($your_group): ?>
+                                                            <li><a
+                                                                    href="<?php echo e(route('page.posttype_detail', $your_group->uri)); ?>"><span
+                                                                        uk-icon="icon:   arrow-right"></span><?php echo e($your_group->post_type); ?></a>
+                                                            </li>
+                                                        <?php endif; ?>
+                                                    </ul>
+                                                </li>
+                                                <li><a
+                                                        href="<?php echo e(route('page.posttype_detail', $news->uri)); ?>"><?php echo e($news->post_type); ?></a>
+                                                </li>
+                                                <li class="js-accordion uk-parent">
+                                                    <a href="" aria-expanded="false">Useful Info
+                                                        <span uk-nav-parent-icon=""
+                                                            class="uk-icon uk-nav-parent-icon"></span>
+                                                    </a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li><a href="<?php echo e(route('page.posttype_detail', $women->uri)); ?>"><span
+                                                                    uk-icon="icon:   arrow-right"></span><?php echo e($women->post_type); ?></a>
+                                                        </li>
+                                                        <li> <a href="<?php echo e(route('page.posttype_detail', $tourism->uri)); ?>"><span
+                                                                    uk-icon="icon:   arrow-right"></span><?php echo e($tourism->post_type); ?></a>
+                                                        </li>
+                                                        <li> <a
+                                                                href="<?php echo e(route('page.posttype_detail', $suggestion->uri)); ?>"><span
+                                                                    uk-icon="icon:   arrow-right"></span><?php echo e($suggestion->post_type); ?></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="<?php echo e(route('page.posttype_detail', $contact_us->uri)); ?>">Contact
+                                                        Us</a></li>
+                                                <?php if($plan_trip): ?>
+                                                    <li class="uk-margin-bottom uk-margin-top">
+                                                        <div class="uk-text-center uk-margin-top    ">
+                                                            <a href="<?php echo e(route('page.posttype_detail', $plan_trip->uri)); ?>"
+                                                                class="inquiry-btn"><?php echo e($plan_trip->post_type); ?></a>
+                                                        </div>
+                                                    </li>
                                                 <?php endif; ?>
                                             </ul>
-                                        </li>
-                                        <li><a href="<?php echo e(route('page.posttype_detail',$news->uri)); ?>"><?php echo e($news->post_type); ?></a></li>
-                                        <li class="js-accordion uk-parent">
-                                            <a href="" aria-expanded="false">Useful Info
-                                                <span uk-nav-parent-icon="" class="uk-icon uk-nav-parent-icon"></span>
-                                            </a>
-                                            <ul class="uk-nav-sub">
-                                                <li><a href="<?php echo e(route('page.posttype_detail',$women->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($women->post_type); ?></a></li>
-                                                <li> <a href="<?php echo e(route('page.posttype_detail',$tourism->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($tourism->post_type); ?></a></li>
-                                                <li> <a href="<?php echo e(route('page.posttype_detail',$suggestion->uri)); ?>"><span uk-icon="icon:   arrow-right"></span><?php echo e($suggestion->post_type); ?></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="<?php echo e(route('page.posttype_detail',$contact_us->uri)); ?>">Contact Us</a></li>
-                                        <?php if($plan_trip): ?>
-                                            <li class="uk-margin-bottom uk-margin-top">
-                                                <div class="uk-text-center uk-margin-top    ">
-                                                    <a href="<?php echo e(route('page.posttype_detail',$plan_trip->uri)); ?>" class="inquiry-btn"><?php echo e($plan_trip->post_type); ?></a>
-                                                </div>
-                                            </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                    <div class="uk-padding uk-padding-remove-top uk-text-center">
-                                        <a href="<?php echo e($setting->youtube_link); ?>" class="uk-icon-button uk-margin-small-right"><i class="fa-brands fa-youtube"></i></a>
-                                        <a href="<?php echo e($setting->facebook_link); ?>" class="uk-icon-button  uk-margin-small-right"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="<?php echo e($setting->twitter_link); ?>" class="uk-icon-button"><i class="fa-brands fa-twitter"></i></a>
+                                            <div class="uk-padding uk-padding-remove-top uk-text-center">
+                                                <a href="<?php echo e($setting->youtube_link); ?>"
+                                                    class="uk-icon-button uk-margin-small-right"><i
+                                                        class="fa-brands fa-youtube"></i></a>
+                                                <a href="<?php echo e($setting->facebook_link); ?>"
+                                                    class="uk-icon-button  uk-margin-small-right"><i
+                                                        class="fa-brands fa-facebook-f"></i></a>
+                                                <a href="<?php echo e($setting->twitter_link); ?>" class="uk-icon-button"><i
+                                                        class="fa-brands fa-twitter"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- end mobile menu -->
-        </div>
+                <!-- end mobile menu -->
+            </div>
         </div>
     </header>
     <div id="modal-form" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" style="padding-bottom:60px;">
-            
+
             <ul class="uk-login-tab" uk-tab>
                 <li><a href="#"><i class="fa-solid fa-unlock login-logo"></i> Sign In </a></li>
                 <li><a href="#"><i class="fa-solid fa-user login-logo"></i>Sign Up</a></li>
             </ul>
 
             <div class="uk-switcher uk-margin">
-                <div> 
+                <div>
                     <form class="uk-contact-form" action="<?php echo e(route('user.login')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class=" uk-child-width-1-1@m uk-grid">
@@ -691,18 +984,20 @@
                         </div>
                         <div class="uk-child-width-1-2 uk-grid">
                             <div>
-                                <label><input class="uk-checkbox uk-margin-small-right" type="checkbox" > Remember me </label>
+                                <label><input class="uk-checkbox uk-margin-small-right" type="checkbox"> Remember me
+                                </label>
                             </div>
                             <div class="uk-flex uk-flex-right">
                                 <a href="<?php echo e(route('forgot.password')); ?>" class="uk-primary">Forgot Password ?</a>
                             </div>
                         </div>
                         <div class="uk-margin-top uk-text-center">
-                            <button type="submit" class="uk-btn uk-btn-secondary">Sign In <span uk-icon="chevron-right"></span></button>
+                            <button type="submit" class="uk-btn uk-btn-secondary">Sign In <span
+                                    uk-icon="chevron-right"></span></button>
                         </div>
                     </form>
                 </div>
-                <div> 
+                <div>
                     <form class="uk-contact-form" action="<?php echo e(route('user-registration')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class=" uk-child-width-1-1@m uk-grid">
@@ -727,12 +1022,14 @@
                             <div class="uk-margin-small-top">
                                 <label class="uk-form-label uk-text-bold" for="c_pwd">Confirm Password</label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="c_pwd" name="password_confirmation" required type="password">
+                                    <input class="uk-input" id="c_pwd" name="password_confirmation" required
+                                        type="password">
                                 </div>
                             </div>
                         </div>
                         <div class="uk-margin-top uk-text-center">
-                            <button type="submit" class="uk-btn uk-btn-secondary">Sign Up <span uk-icon="chevron-right"></span></button>
+                            <button type="submit" class="uk-btn uk-btn-secondary">Sign Up <span
+                                    uk-icon="chevron-right"></span></button>
                         </div>
                     </form>
                 </div>
@@ -743,38 +1040,38 @@
     <!-- Header end -->
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const searchInput = document.getElementById("search-input");
             const resultsDropdown = document.getElementById("search-results");
-        
-            searchInput.addEventListener("input", function() {
+
+            searchInput.addEventListener("input", function () {
                 let query = this.value.trim();
-        
+
                 if (query.length < 2) {
                     resultsDropdown.style.display = "none";
                     return;
                 }
-        
+
                 fetch(`/search-suggestions?query=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         resultsDropdown.innerHTML = "";
-                        
+
                         if (data.length > 0) {
                             data.forEach(item => {
                                 let listItem = document.createElement("li");
                                 listItem.innerHTML = `<a href="/page/${item.uri}.html" class="uk-link-text">${item.trip_title}</a>`;
                                 listItem.style.padding = "8px";
                                 listItem.style.cursor = "pointer";
-        
-                                listItem.addEventListener("click", function() {
+
+                                listItem.addEventListener("click", function () {
                                     searchInput.value = item.trip_title;
                                     resultsDropdown.style.display = "none";
                                 });
-        
+
                                 resultsDropdown.appendChild(listItem);
                             });
-        
+
                             resultsDropdown.style.display = "block";
                         } else {
                             resultsDropdown.style.display = "none";
@@ -782,12 +1079,12 @@
                     })
                     .catch(error => console.error("Error fetching search suggestions:", error));
             });
-        
-            document.addEventListener("click", function(e) {
+
+            document.addEventListener("click", function (e) {
                 if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
                     resultsDropdown.style.display = "none";
                 }
             });
         });
     </script>
-        <?php /**PATH C:\xampp\htdocs\Lhakpa_june\resources\views/themes/default/common/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\Lhakpa_june\resources\views/themes/default/common/header.blade.php ENDPATH**/ ?>

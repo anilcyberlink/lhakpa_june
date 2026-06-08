@@ -20,6 +20,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/storage/app/
-/storage/framework/
-/storage/logs/
+storage/

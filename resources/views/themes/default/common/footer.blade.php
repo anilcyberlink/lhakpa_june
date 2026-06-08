@@ -18,61 +18,64 @@
                     @endforeach
                 </div>
             </div>
-            
         </div>
     </div>
 
-    <div class="uk-container uk-padding-small"
-        style="background:#f3e6e6; border-radius:6px;">
+    <section class="subscribe-section"
+        data-src="{{ asset('theme-assets/img/mountain/mountain3.jpeg') }}"
+        uk-img>
 
-        <div class="uk-flex uk-flex-column uk-flex-center uk-text-center">
+        <div class="uk-container subscribe-wrapper">
 
-            <!-- Text -->
-            <div class="uk-margin-small-bottom">
-                <h4 class="uk-margin-remove uk-text-bold">Join Our Community</h4>
-                <span class="uk-text-muted">Be the first to know about new treks & offers</span>
+            <div class="subscribe-box uk-text-center">
+
+                <h2 class="subscribe-title">
+                    Looking for your next adventure?
+                </h2>
+
+                <p class="subscribe-description">
+                    Get trekking updates, travel inspiration, and exclusive offers straight to your inbox.
+                </p>
+
+                <form action="{{ route('subscribe') }}"
+                    method="POST"
+                    class="uk-flex uk-flex-center uk-flex-middle uk-grid-small subscribe-form"
+                    uk-grid>
+
+                    @csrf
+
+                    <input name="typeOf" type="hidden" value="0"/>
+                    <input type="hidden" id="g_recaptcha_response" name="g_recaptcha_response"/>
+
+                    <div>
+                        <input class="uk-input subscribe-input"
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required>
+                    </div>
+
+                    <div>
+                        <input class="uk-input subscribe-input"
+                            type="email"
+                            name="email"
+                            placeholder="Your email"
+                            required>
+                    </div>
+
+                    <div>
+                        <button class="uk-button subscribe-btn" type="submit">
+                            SUBSCRIBE
+                        </button>
+                    </div>
+
+                </form>
+
             </div>
 
-            <!-- Form -->
-            <form action="{{route('subscribe')}}" method="POST" class="uk-grid-small uk-flex uk-flex-center uk-child-width-auto@s" uk-grid>
-                @csrf
-                <input name="typeOf" type="hidden" value="0"/>
-                <input type="hidden" id="g_recaptcha_response" name="g_recaptcha_response"/>
-
-                <div>
-                    <input
-                        class="uk-input uk-border-pill uk-form-small"
-                        type="text"
-                        placeholder="Your name"
-                        name="name"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <input
-                        class="uk-input uk-border-pill uk-form-small"
-                        type="email"
-                        name="email"
-                        placeholder="Your email"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <button
-                        class="uk-button uk-border-pill uk-form-small btn-theme-green"
-                        type="submit"
-                        style="padding:0 28px; font-weight:600;"
-                    >
-                        SUBSCRIBE
-                    </button>
-                </div>
-
-            </form>
-
         </div>
-    </div>
+
+    </section>
 
 </div>
     <footer class="uk-padding bg-primary ">
@@ -107,7 +110,7 @@
                             @foreach ($activity as $row)
                                 <li> <a href="{{ route('activity-list', $row->uri) }}">{{ $row->title }}</a> </li>
                             @endforeach
-    
+
                         </ul>
                     </div>
                     <div>
@@ -118,7 +121,7 @@
                             @endforeach
                         </ul>
                     </div>
-    
+
                     <div>
                         <p class="uk-margin-remove "><a href="#" class="uk-secondary f-20 fw-600 uk-text-uppercase ">Useful Links</a></p>
                         <ul class=" footer-list">
@@ -132,18 +135,29 @@
             </div>
         </div>
     </footer>
-    
-    <div class="small-footer uk-child-width-1-2@m uk-padding uk-padding-remove-vertical uk-flex uk-flex-middle uk-pattern-bg " uk-grid >
-        <div class="uk-text-center uk-text-left@m uk-margin-top" uk-scrollspy="cls: uk-animation-fade;  delay: 300; repeat: false">
-            <div class="uk-white">Made with <i class="fa fa-heart" style="color: #ea050a;"></i> by <a href="https://cyberlink.com.np/" target="_blank" class="uk-white">Cyberlink Pvt.Ltd.</a></div>
+
+    <div class="small-footer uk-child-width-1-2@m uk-padding uk-padding-remove-vertical uk-flex uk-flex-middle uk-pattern-bg "
+        uk-grid>
+        <div class="uk-text-center uk-text-left@m uk-margin-top"
+            uk-scrollspy="cls: uk-animation-fade;  delay: 300; repeat: false">
+            <div class="uk-white">Made with <i class="fa fa-heart" style="color: #ea050a;"></i> by
+                <a href="https://cyberlink.com.np/" class="uk-white">Cyberlink Pvt.Ltd.</a></div>
         </div>
-        <div class="uk-footer-icon uk-text-right@m uk-text-center uk-margin-top uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade;  delay: 300; repeat: false">
-            <a href="{{$setting->youtube_link}}" class="uk-icon-button uk-margin-small-right"><i class="fa-brands fa-youtube"></i></a>
-            <a href="{{$setting->facebook_link}}" class="uk-icon-button  uk-margin-small-right"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="{{$setting->twitter_link}}" class="uk-icon-button"><i class="fa-brands fa-twitter"></i></a>
+        <div class="uk-footer-icon uk-text-right@m uk-text-center uk-margin-top uk-margin-bottom"
+            uk-scrollspy="cls: uk-animation-fade;  delay: 300; repeat: false">
+            <a href="{{$setting->facebook_link}}" class="uk-margin-small-right">
+                <img src="{{ asset('theme-assets/img/social-media/facebook.svg') }}" width="30" alt="Facebook">
+            </a>
+            <a href="{{$setting->youtube_link}}" class="uk-margin-small-right">
+                <img src="{{ asset('theme-assets/img/social-media/youtube.svg') }}" width="30" alt="YouTube">
+            </a>
+            <a href="{{$setting->twitter_link}}" class="uk-margin-small-right">
+                <img src="{{ asset('theme-assets/img/social-media/twitter.svg') }}" width="30" alt="Twitter">
+            </a>
+
         </div>
     </div>
-   
+
     <script src=" {{ asset('theme-assets/js/uikit-icons.js') }}"></script>
     <script src="{{asset('theme-assets/js/swiper.min.js')}}"></script>
     <script src="{{asset('theme-assets/js/youtube-video.js')}}"></script>
@@ -171,8 +185,8 @@
 
 </script>
 <!-- WhatsApp Chat Button -->
-<a href="https://wa.me/9849055448" 
-   target="_blank" 
+<a href="https://wa.me/9849055448"
+   target="_blank"
    style="
       position:fixed;
       bottom:100px;   /* moved above Tawk.to */
@@ -193,36 +207,6 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<style>
-    .uk-form-small {
-        height: 36px;
-        font-size: 14px;
-    }
-
-    .uk-button-primary {
-        font-weight: 600;
-        letter-spacing: 0.4px;
-    }
-
-    .uk-input {
-        background: #fff;
-    }
-    .btn-theme-green {
-        background-color: #7d0020; /* theme green */
-        color: #ffffff;
-        border: none;
-    }
-
-    .btn-theme-green:hover,
-    .btn-theme-green:focus {
-        background-color: #7aa92f;
-        color: #ffffff;
-    }
-
-    .btn-theme-green:active {
-        background-color: #6c9b28;
-    }
-</style>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const texts = document.querySelectorAll(".moretext");
@@ -246,5 +230,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </body>
-    </body>
-    </html> 
+</html>

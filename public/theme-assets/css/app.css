@@ -1,4 +1,4 @@
- 
+
 .scroll-area {
     height: var(--sp-64);
     overflow: auto;
@@ -8,7 +8,7 @@
     scrollbar-width: thin;
     scrollbar-color: var(--secondary) #ffffff00;
 }
- 
+
 /* Chrome, Edge, Safari */
 .scroll-area::-webkit-scrollbar {
     width:4px;
@@ -26,7 +26,7 @@
 
 .scroll-area::-webkit-scrollbar-thumb:hover {
     background: var(--secondary);
-} 
+}
 
 .uk-main-header-transparent .uk-dropbar .uk-container {
     padding-top: 0px;
@@ -40,7 +40,7 @@
     font-family: "Bebas Neue", serif;
     text-transform: uppercase;
 }
- 
+
 @media screen and (max-width: 640px) {
     .sub-nav   .uk-navbar-nav> li> a
     {
@@ -253,7 +253,7 @@
 
 .pt-64 { padding-top: 16rem; }          .pb-64 { padding-bottom: 16rem; }
 .px-64 { padding-left: 16rem; padding-right: 16rem; }    .py-64 { padding-top: 16rem; padding-bottom: 16rem; }
-/* ===== height width ===== */ 
+/* ===== height width ===== */
 
     .h-\(--height\) {
         height: var(--height)
@@ -443,7 +443,7 @@
         height: 600px
     }
 
-     
+
 
     .h-\[calc\(100vh-3\.5rem\)\] {
         height: calc(100vh - 3.5rem)
@@ -573,7 +573,7 @@
         max-height: calc(var(--spacing)*96)
     }
 
-   
+
 
     .max-h-\[calc\(100dvh-\(--spacing\(6\)\)\)\] {
         max-height: calc(100dvh - (calc(var(--spacing)*6)))
@@ -699,7 +699,7 @@
         min-height: 75dvh
     }
 
-    
+
 
     .min-h-auto {
         min-height: auto
@@ -1033,7 +1033,7 @@
         width: 584px
     }
 
-    
+
 
     .w-\[calc\(50vi-\(var\(--size\)\/2\)-\(var\(--gap\)\)\)\] {
         width: calc(50vi - (var(--size)/2) - (var(--gap)))
@@ -1211,7 +1211,7 @@
         max-width: 226px
     }
 
-   
+
 
     .max-w-dvh {
         max-width: 100dvh
@@ -1365,7 +1365,7 @@
         min-width: calc(var(--spacing)*80)
     }
 
-    
+
 
     .min-w-auto {
         min-width: auto
@@ -1481,4 +1481,99 @@
 .moretext p {
   margin: 0px 0 5px 0 ;
   display: block;
+}
+
+/* newslater */
+.subscribe-section{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 55px 0;
+}
+
+.subscribe-section::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 100, 140, 0.55);
+}
+
+.subscribe-wrapper{
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.subscribe-box{
+    max-width: 850px;
+    margin: auto;
+}
+
+.subscribe-title{
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.subscribe-description{
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto 25px;
+}
+
+.subscribe-form{
+    margin-top: 10px;
+}
+
+.subscribe-input{
+    height: 46px;
+    min-width: 240px;
+    border-radius: 4px;
+    border: none;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.subscribe-btn{
+    height: 46px;
+    padding: 0 28px;
+    background: #14d5d1;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 700;
+    border: none;
+    transition: 0.3s;
+}
+
+.subscribe-btn:hover{
+    background: #0fc1bd;
+    color: #fff;
+}
+
+@media(max-width: 767px){
+
+    .subscribe-section{
+        padding: 45px 0;
+    }
+
+    .subscribe-title{
+        font-size: 24px;
+    }
+
+    .subscribe-description{
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .subscribe-input{
+        min-width: 100%;
+    }
+
+    .subscribe-form{
+        gap: 10px;
+    }
 }

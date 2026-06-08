@@ -7,7 +7,7 @@
         <div class="uk-flex uk-flex-middle uk-flex-center uk-grid-collapse " uk-grid>
             <div class="uk-width-1-1@m">
                 <div class="uk-sub-banner-font uk-text-center">
-                    <h2 class="uk-secondary">{{ $trip->trip_title }}</h2>  
+                    <h2 class="uk-secondary">{{ $trip->trip_title }}</h2>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                                     if (selectedValue === '1') {
                                         price = {{ $schedule->price }};
                                     } else if (selectedValue === '0') {
-                                        price = {{ $schedule->group_size }}; 
+                                        price = {{ $schedule->group_size }};
                                     }
                                     $('#price').val(price);
                                 });
@@ -115,7 +115,7 @@
                             <label class="uk-form-label " for="people">No of People *</label>
                             <input class="uk-input border" style="background:#9e9e9e17;" name="total_travellers" type="number" min="1" aria-label="people" required>
                         </div>
-      
+
                         <div class="uk-width-1-1 uk-margin-small-top">
                             <label class="uk-form-label " for="Message">Extra Requirement</label>
                             <textarea name="message"style="background:#9e9e9e17;" class="uk-textarea border" rows="5" placeholder="Message" aria-label="Message"></textarea>
@@ -129,16 +129,60 @@
             </div>
             <div class="uk-width-1-4@m">
                 <div class="uk-sidebar" uk-sticky="offset: 90; end: !">
-                    <div class="uk-media-260 ">
-                        <img src="{{$trip->banner ? asset('uploads/banners/'.$trip->banner) : asset('theme-assets/img/mountain/mountain1.jpeg')}}" class="border" alt="">
-                    </div>
-                    <h3 class="uk-text-center uk-margin-top" style="background: var(--primary);color: white;padding: 7px;">
-                        {{ $trip->trip_title }}
-                    </h3>
-                    <hr>
-                </div>
 
-            </div> 
+                    <div class="uk-card uk-card-default uk-border-rounded border overflow-hidden">
+
+                        <!-- Trip Image -->
+                        <div class="uk-media-260 ">
+                            <img src="{{$trip->banner ? asset('uploads/banners/'.$trip->banner) : asset('theme-assets/img/mountain/mountain1.jpeg')}}" class="border" alt="">
+                        </div>
+                        <h3 class="uk-text-center uk-margin-top" style="background: var(--primary);color: white;padding: 7px;">
+                            {{ $trip->trip_title }}
+                        </h3>
+
+                        <!-- Card Body -->
+                        <div class="uk-card-body uk-padding-small">
+
+                            <!-- Price -->
+                            <div class="uk-text-center uk-margin-small-bottom">
+                                <span class="uk-text-meta">Starting From</span>
+                                <h2 class="uk-margin-remove uk-primary">
+                                    {{ $trip->price ? '$'.$trip->price : '€'.$trip->price_euro }}
+                                </h2>
+                                <small>per person</small>
+                            </div>
+
+                            <hr>
+
+                            <!-- Trip Details -->
+                            <ul class="uk-list uk-list-medium   uk-list-striped">
+
+                                <li class="uk-flex uk-flex-between">
+                                    <span> Duration</span>
+                                    <strong>{{ $trip->duration }} Days</strong>
+                                </li>
+
+                                <li class="uk-flex uk-flex-between">
+                                    <span> Max Altitude</span>
+                                    <strong>{{ $trip->max_altitude }}</strong>
+                                </li>
+
+                                <li class="uk-flex uk-flex-between">
+                                    <span> Difficulty</span>
+                                    <strong>{{ $trip->trip_grade }}</strong>
+                                </li>
+
+                                <li class="uk-flex uk-flex-between">
+                                    <span> Group Size</span>
+                                    <strong>{{ $trip->group_size }}</strong>
+                                </li>
+
+                            </ul>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

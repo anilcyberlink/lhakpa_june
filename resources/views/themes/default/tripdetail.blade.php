@@ -178,9 +178,9 @@
                                     <h1 class="uk-primary uk-margin-remove">{{$data->route}}</h1>
                                 </div>
                             </div>
-                            
+
                             <div class="uk-width-1-2@s uk-text-right@m uk-text-left uk-margin-top uk-responsive-flex">
-                                
+
                                <div>
                                     @if($data->trip_pdf)
                                         <a href="{{ route('trip.download.pdf', $data->id) }}" class="uk-btn uk-btn-secondary download-pdf-btn  " download>
@@ -195,11 +195,11 @@
                                 @if ($data->trip_code)
                                     <div class="uk-margin-top">
                                         <p><b class="uk-text-uppercase uk-secondary">Ref No: </b>{{$data->trip_code}}</p>
-                                    </div>  
+                                    </div>
                                 @endif
                             </div>
                         </div>
-                       
+
                         <div class="uk-column-1-1 uk-column-1-2@s">
                         <span class="uk-text-justify">
                             {!!$data->trip_content!!}
@@ -208,15 +208,50 @@
                     </div>
                     <!-- overview end -->
 
-                    <!-- hightlight start-->
-                    @if (!empty($data->trip_highlight))
-                        <div class="uk-font uk-margin-top">
-                            <span class="uk-primary uk-text-uppercase f-27 "><i class="fa-solid fa-person-hiking uk-margin-small-right" aria-hidden="true"></i>Trip highlight</span>
-                            <ul class="uk-list uk-highlight uk-list-divider uk-light-bg uk-padding border uk-responsive-padding">
-                                {!! $data->trip_highlight !!}
-                            </ul>
+                    <div class="uk-grid-medium uk-child-width-1-1 uk-child-width-1-2@m uk-grid-match my-10" uk-grid>
+
+                        <!-- Trip Highlight Card -->
+                        <div>
+                            <div
+                                class="uk-card bg-primary-light uk-card-body rounded-xl uk-height-1-1 uk-box-shadow-medium">
+
+                                <div class="uk-flex uk-flex-middle uk-margin-bottom">
+                                    <div
+                                        class="uk-flex-none uk-width-small uk-flex uk-flex-center uk-flex-middle bg-primary text-white uk-border-circle w-12 h-12">
+                                        <i class="fa-solid fa-person-hiking"></i>
+                                    </div>
+                                    <h3 class="uk-margin-small-left uk-card-title uk-text-uppercase text-primary"
+                                        style="margin:0;">
+                                        Trip Highlight
+                                    </h3>
+                                </div>
+
+                                <ul class="uk-list uk-list-divider uk-padding-remove-left mt-5">
+                                    {!! $data->trip_highlight !!}
+                                </ul>
+                            </div>
                         </div>
-                    @endif
+
+                        <!-- Trip Grade Card -->
+                        <div>
+                            <div
+                                class="uk-card bg-secondary-light uk-card-body rounded-xl uk-height-1-1 uk-box-shadow-medium">
+
+                                <div class="uk-flex uk-flex-middle uk-margin-bottom">
+                                    <div
+                                        class="uk-flex-none uk-width-small uk-flex uk-flex-center uk-flex-middle bg-secondary text-white uk-border-circle w-12 h-12">
+                                        <i class="fa fa-tachometer"></i>
+                                    </div>
+                                    <h3 class="uk-margin-small-left uk-card-title uk-text-uppercase text-secondary"
+                                        style="margin:0;">
+                                        Trip Grade
+                                    </h3>
+                                </div>
+                                {!! $data->status_text !!}
+                            </div>
+                        </div>
+
+                    </div>
                     <!-- end hightlight -->
 
                     <!-- notice start-->
@@ -233,7 +268,7 @@
                     <!-- end notice -->
 
                 </div>
-                
+
                 <div id="itinerary">
                     <div class="uk-font uk-margin-top uk-margin-bottom" id="itinerary">
                         @if($itinerary->count() > 0)
@@ -263,14 +298,14 @@
                                                         <p class="uk-margin-remove theme-font-medium"> {{ $item->title }} </p>
                                                      </div>
                                                   </div>
-                                               </div>  
+                                               </div>
                                             </div>
                                             <div class="uk-accordion-content uk-margin-remove">
                                                 <p>{!! $item->content !!}</p>
                                             </div>
-                                              
+
                                         </li>
-                                        
+
                                     @endforeach
                                 </ul>
                             </div>
@@ -279,7 +314,7 @@
                             <div class="uk-maps uk-margin-large-top" uk-lightbox>
                                 <div class="uk-font uk-text-center uk-margin-top">
                                     <span class="uk-primary uk-text-uppercase f-27 "><i class="fa-regular fa-calendar uk-margin-small-right" aria-hidden="true"></i>Maps</span>
-                                </div> 
+                                </div>
                                 <a href="{{ asset('uploads/original/'.$data->trip_map)}}" class="uk-media-400">
                                     <img src="{{ asset('uploads/original/'.$data->trip_map)}}" alt="{{$data->trip_title}}"/>
                                 </a>
@@ -288,7 +323,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- sidebar-->
             <div class="uk-width-1-4@l ">
                 <!-- facilities start -->
@@ -414,9 +449,9 @@
                             <a href="#modal-customize" class="uk-extra uk-secondary-bg uk-book-btn border uk-margin-small-top " uk-toggle>Customize Your Trip</a>
                         </div>
                         @if ($schedules->count() > 0)
-                        <div class="uk-flex">  
+                        <div class="uk-flex">
                                 <a href="#offcanvas-usage" class=" uk-extra uk-primary-bg uk-book-btn border uk-margin-small-top" uk-toggle>View Dates and prices</a>
-                        </div>   
+                        </div>
                     </div>
                     @endif
                 </div>
@@ -435,14 +470,8 @@
                                                         <img src="{{ !empty($expert->thumbnail) ? asset('uploads/team/' .$expert->thumbnail) : asset('theme-assets/img/mountain/mountain1.jpeg')}}" class="uk-sherpa-img" alt="">
                                                         <div class="uk-sherpa-font">
                                                             <h2>{{ $expert->name }}</h2>
-                                                            <span>{{ $expert->position }}</span>
-                                                            <span><b> Languages:</b> {{ $expert->language }}</span>
-                                                            <!--<div>-->
-                                                            <!--    <b> Languages:</b> {{ $expert->language }}-->
-                                                                <!--<i class="fa-brands fa-whatsapp uk-whatsapp"></i>-->
-                                                                <!--<i class="fa-brands fa-viber uk-viber"></i>-->
-                                                                <!--<i class="fa-solid fa-phone uk-phone"></i>-->
-                                                            <!--</div>-->
+                                                            <span>{{ $expert->position }}</span><br>
+                                                            <span><b> Lang:</b> {{ $expert->language }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -455,7 +484,7 @@
                             <div class="uk-flex">
                                 <a href="{{route('page.posttype_detail',$teamPage->uri)}}" class="uk-extra uk-secondary-bg uk-book-btn border uk-margin-small-top ">View All Team Members</a>
                             </div>
-                            
+
                         </div>
                     </div>
                 @endif
@@ -466,18 +495,11 @@
                         <div class=" text-secondary-light uk-text-bold">Need Help with this booking:</div>
                         <div class="uk-margin-small-top">
                             <div class="uk-footer-icon uk-flex uk-flex-between">
-                                <!--<a href="https://www.instagram.com" class="uk-icon-button "><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>-->
-                                <!--<a href="https://www.facebook.com" class="uk-icon-button  "><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>-->
-                                <!--<a href="https://twitter.com/" class="uk-icon-button"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>-->
-                                <!--<a href="https://www.whatsapp.com/" class="uk-icon-button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>-->
                                 <div>
                                     <a  href="mailto:lhakpatrekking@gmail.com" class="uk-icon-button" style="background-color: white;"><i class="fa-solid fa-envelope" aria-hidden="true" style="color: #dd4a45;"></i></a>
                                     <a href="https://www.viber.com/" class="uk-icon-button" style="background-color: #7a509c;"><i class="fa-brands fa-viber" aria-hidden="true" style="color: white;"></i></a>
                                     <a href="https://twitter.com/" class="uk-icon-button" uk-icon="icon: x" style="background: black; color:white;"></a>
-                                    </div>
-                                <!--<div class=" text-secondary-light uk-text-bold">-->
-                                <!--    NEPAL-->
-                                <!--</div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -509,11 +531,11 @@
                                                           <span>{{ $int_expert->brief }}</span><br>
                                                           <!--<span><b>Country:</b> France</span><br>-->
                                                           @if( $int_expert->language )
-                                                          <span><b> Languages:</b> {{ $int_expert->language }}</span>
+                                                          <span><b> Lang:</b> {{ $int_expert->language }}</span>
                                                           @endif
                                                        </div>
                                                        </div>
-                                                       
+
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -539,72 +561,16 @@
     </div>
 </section>
 
-<!-- itnerary start-->
-<!--<section id="itinerary">-->
-<!--    <div class="uk-container">-->
-<!--        <div class="uk-font uk-margin-top uk-margin-bottom" id="itinerary">-->
-<!--            @if($itinerary->count() > 0)-->
-<!--                <div class="uk-flex uk-flex-between">-->
-<!--                    <div class="uk-font uk-text-center">-->
-<!--                        <span class="uk-primary uk-text-uppercase f-27 "><i class="fa-regular fa-calendar uk-margin-small-right" aria-hidden="true"></i>Itinerary</span>-->
-<!--                    </div>-->
-<!--                    <div class="uk-flex uk-flex-middle">-->
-<!--                        <p class="uk-margin-small-right">Share this: </p>-->
-<!--                        <div class="uk-footer-icon   uk-margin-bottom">-->
-<!--                            <a href="https://www.instagram.com" class="uk-icon-button uk-margin-small-right"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>-->
-<!--                            <a href="https://www.facebook.com" class="uk-icon-button  uk-margin-small-right"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>-->
-<!--                            <a href="https://twitter.com/" class="uk-icon-button"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class=" uk-light-bg uk-padding border uk-margin-top uk-margin-bottom">-->
-<!--                    <ul class="uk-detail-list" uk-accordion>-->
-<!--                        @foreach ($itinerary as $item)-->
-<!--                            <li class="{{ $loop->first ? 'uk-open' : '' }}">-->
-                                <!--<a class="uk-accordion-title" href><span class="uk-margin-right uk-day-title">Day {{ $item->days }}</span> {{ $item->title }}</a>-->
-<!--                                <div class="uk-accordion-title  uk-itinerary-title">-->
-<!--                                    <div class="uk-grid-small uk-flex-middle uk-grid-collapse" uk-grid>-->
-<!--                                      <div class="uk-width-auto uk-text-center uk-first-column">-->
-<!--                                         <div class="uk-day-title uk-margin-small-right"> Day {{ $item->days }} </div>-->
-<!--                                      </div>-->
-<!--                                      <div class="uk-width-expand">-->
-<!--                                         <div class="uk-width-1-1">-->
-<!--                                            <p class="uk-margin-remove theme-font-medium"> {{ $item->title }} </p>-->
-<!--                                         </div>-->
-<!--                                      </div>-->
-<!--                                   </div>  -->
-<!--                                </div>-->
-<!--                                <div class="uk-accordion-content uk-margin-remove">-->
-<!--                                    <p>{!! $item->content !!}</p>-->
-<!--                                </div>-->
-                                  
-<!--                            </li>-->
-                            
-<!--                        @endforeach-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            @endif-->
-<!--            @if(!empty($data->trip_map))-->
-<!--                <div class="uk-maps uk-margin-large-top" uk-lightbox>-->
-<!--                    <div class="uk-font uk-text-center uk-margin-top">-->
-<!--                        <span class="uk-primary uk-text-uppercase f-27 "><i class="fa-regular fa-calendar uk-margin-small-right" aria-hidden="true"></i>Maps</span>-->
-<!--                    </div> -->
-<!--                    <a href="{{ asset('uploads/original/'.$data->trip_map)}}" class="uk-media-400">-->
-<!--                        <img src="{{ asset('uploads/original/'.$data->trip_map)}}" alt="{{$data->trip_title}}"/>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            @endif-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!-- itnerary end-->
-
 <!-- cost includes / excludes section start-->
 @if ($cost_includes->isNotEmpty() || $banner->isNotEmpty() || $cost_excludes->isNotEmpty() || $guidelines->count() > 0)
-    <section class="uk-position-relative uk-section  uk-background-norepeat uk-background-cover" uk-parallax="bgx: -100; easing: 1;" data-src="{{asset('theme-assets/img/bg/01.jpg')}}" id="information" uk-img>
+    <section class="uk-position-relative custom-info-section uk-background-norepeat uk-background-cover" uk-parallax="bgx: -100; easing: 1;" data-src="{{asset('theme-assets/img/bg/01.jpg')}}" id="information" uk-img>
         <div class="uk-overlay-pink uk-position-cover"></div>
         <div class="uk-container uk-position-relative">
-            <ul class="uk-subnav uk-subnav-pill uk-why-us-tab uk-flex-center" uk-switcher="animation: uk-animation-fade">           
+            {{-- Heading --}}
+            <h2 class="uk-text-center uk-light uk-margin-small-bottom uk-margin-small-top information-title">
+                INFORMATION
+            </h2>
+            <ul class="uk-subnav uk-subnav-pill uk-why-us-tab uk-flex-center" uk-switcher="animation: uk-animation-fade">
                 @if ($cost_includes->count() > 0)
                     <li><a href="#" class="green-border">TRIP</a></li>
                 @endif
@@ -687,11 +653,22 @@
         </div>
         </div>
     </section>
+    <style>
+        .custom-info-section{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .information-title{
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    </style>
 @endif
 <!-- cost includes / excludes section end -->
 
 <!-- faq section -->
-<section class="uk-section uk-section-overlap-top-light" id="faq"> 
+<section class="uk-section uk-section-overlap-top-light" id="faq">
     <div class="uk-container">
         @if ($faqs->count()>0)
             <div class="uk-font uk-text-center">
@@ -713,7 +690,7 @@
 <!-- faq section end -->
 
 <!-- review section start-->
-<section class=" uk-primary-bg" id="review">
+{{-- <section class=" uk-primary-bg" id="review">
     <div class="uk-child-width-1-2@m uk-grid-match uk-grid-collapse" uk-grid>
         <div>
             <img src="{{$data->thumbnail ? asset('uploads/original/'.$data->thumbnail) : asset('theme-assets/img/review.jpeg')}}" alt="{{$data->trip_title}}" style="height:100%; object-fit:cover;">
@@ -727,16 +704,16 @@
                         <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
                             <div class="uk-slider-items">
                                 <!-- client detail -->
-                                @foreach ($trip_review as $value)  
-                                    <div class="uk-width-1-1">  
+                                @foreach ($trip_review as $value)
+                                    <div class="uk-width-1-1">
                                         <div class="uk-star-rating">
                                             @for($i=0; $i < $value->rating; $i++)
                                                 <i class="fa-solid fa-star"></i>
                                             @endfor
                                         </div>
-                                        <span class=" uk-contents"> 
-                                             
-                                             <p  id="text" class="message-container uk-margin-top"> 
+                                        <span class=" uk-contents">
+
+                                             <p  id="text" class="message-container uk-margin-top">
                                              {{ $value->message }}
                                              </p>
                                              <button id="toggleBtn" class="read-more-btn">Read More </button>
@@ -771,9 +748,214 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- review section end -->
 
+<section class="uk-section-small" id="review">
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-text-center uk-margin-large-bottom uk-title-font">
+            <div class="uk-star-rating uk-margin-small-bottom" style="font-size:22px; letter-spacing:4px;">
+                <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                    class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+            </div>
+            <h1 class="uk-text-uppercase uk-margin-remove uk-title-font text-primary">100% of our customers satisfied
+            </h1>
+            <p class="uk-text-muted uk-margin-small uk-text-center">out of 26 travelers who responded to the
+                satisfaction survey</p>
+        </div>
+
+
+        <div class="uk-text-center uk-margin-medium-bottom"
+            style="background:#f5f2ed; border:0.5px solid #e0dbd2; padding:1rem; border-radius:4px;">
+            <span
+                style="font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:#888;">Traveler
+                Reviews</span>
+            <div style="width:60px; height:2.5px; background:#c8962e; margin:8px auto 0; border-radius:2px;"></div>
+        </div>
+
+
+        <div class="uk-grid-small uk-flex uk-flex-top review-row uk-margin-large-bottom" uk-grid>
+
+
+            <div class="uk-width-1-1 uk-width-auto@m uk-text-center" style="min-width:120px;">
+                <img src="https://lhakpatrekking.com/uploads/team/472597527-1933060393768947-1541393137296149325-n-RR4LiTT0jQQtzFh8ncAYxw80Kkjv9VZjzDSbik2X.jpg"
+                    class="uk-border-circle"
+                    style="width:70px; height:70px; object-fit:cover; border:2px solid #e0dbd2;" alt="Name">
+                <p class="uk-margin-small-top uk-margin-remove-bottom"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                    Françoise L.
+                </p>
+                <p class="uk-margin-remove uk-text-muted" style="font-size:0.72rem;">
+                    Traveler<br>
+
+                    2 trip with Lhakpa Treks
+
+                </p>
+            </div>
+
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+                <p class="uk-margin-remove-bottom uk-text-muted"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">
+                    11/22/2025, Very satisfied with her trip the High Road of the Annapurnas
+
+
+                </p>
+                <div class="uk-star-rating uk-margin-small" style="font-size:13px;">
+
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+
+                </div>
+                <div class="moretext clamp clamp-3 uk-text-small" style="font-size:0.95rem; ">
+                    <p>I have traveled with Lhakpa Treks twice now. Serious agency, competent guide, and a
+                        well-organized trip from start to finish. The landscapes were absolutely breathtaking and our
+                        guide made sure we were always safe and comfortable. </p>
+                    <p>I would not hesitate to book again for a third adventure.</p>
+
+                </div>
+                <a href="#" class="read-more-btn text-primary moreless-button">Read More</a>
+            </div>
+
+        </div>
+
+        <div class="uk-grid-small uk-flex uk-flex-top review-row uk-margin-large-bottom" uk-grid>
+
+
+            <div class="uk-width-1-1 uk-width-auto@m uk-text-center" style="min-width:120px;">
+                <img src="https://lhakpatrekking.com/uploads/team/472597527-1933060393768947-1541393137296149325-n-RR4LiTT0jQQtzFh8ncAYxw80Kkjv9VZjzDSbik2X.jpg"
+                    class="uk-border-circle"
+                    style="width:70px; height:70px; object-fit:cover; border:2px solid #e0dbd2;" alt="Name">
+                <p class="uk-margin-small-top uk-margin-remove-bottom"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                    Françoise L.
+                </p>
+                <p class="uk-margin-remove uk-text-muted" style="font-size:0.72rem;">
+                    Traveler<br>
+
+                    2 trip with Lhakpa Treks
+
+                </p>
+            </div>
+
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+                <p class="uk-margin-remove-bottom uk-text-muted"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">
+                    11/22/2025, Very satisfied with her trip the High Road of the Annapurnas
+
+
+                </p>
+                <div class="uk-star-rating uk-margin-small" style="font-size:13px;">
+
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+
+                </div>
+                <div class="moretext clamp clamp-3 uk-text-small" style="font-size:0.95rem; ">
+                    <p>I have traveled with Lhakpa Treks twice now. Serious agency, competent guide, and a
+                        well-organized trip from start to finish. The landscapes were absolutely breathtaking and our
+                        guide made sure we were always safe and comfortable. </p>
+                    <p>I would not hesitate to book again for a third adventure.</p>
+
+                </div>
+                <a href="#" class="read-more-btn text-primary moreless-button">Read More</a>
+            </div>
+
+        </div>
+        <div class="uk-grid-small uk-flex uk-flex-top review-row uk-margin-large-bottom" uk-grid>
+
+
+            <div class="uk-width-1-1 uk-width-auto@m uk-text-center" style="min-width:120px;">
+                <img src="https://lhakpatrekking.com/uploads/team/472597527-1933060393768947-1541393137296149325-n-RR4LiTT0jQQtzFh8ncAYxw80Kkjv9VZjzDSbik2X.jpg"
+                    class="uk-border-circle"
+                    style="width:70px; height:70px; object-fit:cover; border:2px solid #e0dbd2;" alt="Name">
+                <p class="uk-margin-small-top uk-margin-remove-bottom"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                    Françoise L.
+                </p>
+                <p class="uk-margin-remove uk-text-muted" style="font-size:0.72rem;">
+                    Traveler<br>
+
+                    2 trip with Lhakpa Treks
+
+                </p>
+            </div>
+
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+                <p class="uk-margin-remove-bottom uk-text-muted"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">
+                    11/22/2025, Very satisfied with her trip the High Road of the Annapurnas
+
+
+                </p>
+                <div class="uk-star-rating uk-margin-small" style="font-size:13px;">
+
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+
+                </div>
+                <div class="moretext clamp clamp-3 uk-text-small" style="font-size:0.95rem; ">
+                    <p>I have traveled with Lhakpa Treks twice now. Serious agency, competent guide, and a
+                        well-organized trip from start to finish. The landscapes were absolutely breathtaking and our
+                        guide made sure we were always safe and comfortable. </p>
+                    <p>I would not hesitate to book again for a third adventure.</p>
+
+                </div>
+                <a href="#" class="read-more-btn text-primary moreless-button">Read More</a>
+            </div>
+
+        </div>
+
+        <div class="uk-grid-small uk-flex uk-flex-top review-row  " uk-grid>
+
+
+            <div class="uk-width-1-1 uk-width-auto@m uk-text-center" style="min-width:120px;">
+                <img src="https://lhakpatrekking.com/uploads/team/472597527-1933060393768947-1541393137296149325-n-RR4LiTT0jQQtzFh8ncAYxw80Kkjv9VZjzDSbik2X.jpg"
+                    class="uk-border-circle"
+                    style="width:70px; height:70px; object-fit:cover; border:2px solid #e0dbd2;" alt="Name">
+                <p class="uk-margin-small-top uk-margin-remove-bottom"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                    Françoise L.
+                </p>
+                <p class="uk-margin-remove uk-text-muted" style="font-size:0.72rem;">
+                    Traveler<br>
+
+                    2 trip with Lhakpa Treks
+
+                </p>
+            </div>
+
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+                <p class="uk-margin-remove-bottom uk-text-muted"
+                    style="font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">
+                    11/22/2025, Very satisfied with her trip the High Road of the Annapurnas
+
+
+                </p>
+                <div class="uk-star-rating uk-margin-small" style="font-size:13px;">
+
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+
+                </div>
+                <div class="moretext clamp clamp-3 uk-text-small" style="font-size:0.95rem; ">
+                    <p>I have traveled with Lhakpa Treks twice now. Serious agency, competent guide, and a
+                        well-organized trip from start to finish. The landscapes were absolutely breathtaking and our
+                        guide made sure we were always safe and comfortable. </p>
+                    <p>I would not hesitate to book again for a third adventure.</p>
+
+                </div>
+                <a href="#" class="read-more-btn text-primary moreless-button">Read More</a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 <!-- new element added -->
 <!-- similar trip section  start-->
 <section class="uk-section">
@@ -843,12 +1025,12 @@
 <!-- new element added -->
 
 
- 
-   
- 
+
+
+
 <!-- review form modal start -->
- 
-<div id="offcanvas-review" uk-modal> 
+
+<div id="offcanvas-review" uk-modal>
     <div class="uk-modal-dialog uk-modal-body uk-padding-remove-top uk-padding-remove-left uk-padding-remove-right uk-padding-bottom">
         <div class="uk-padding uk-padding-remove-bottom">
             <h3 class="uk-modal-title uk-text-center uk-white uk-margin-remove uk-primary-bg border">write a review</h3>
@@ -860,7 +1042,7 @@
                     <div class="uk-margin-small-top">
                         <label class="uk-form-label uk-text-bold" for="full_name">Full Name</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="fullname" name="full_name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required type="text">  
+                            <input class="uk-input" id="fullname" name="full_name" value="{{ Auth::check() ? Auth::user()->name : '' }}" required type="text">
                         </div>
                     </div>
                     <div class="uk-margin-small-top">
@@ -908,7 +1090,7 @@
                 <div class="uk-margin-top uk-text-center">
                     <button type="submit" class="uk-btn uk-btn-secondary">Submit</button>
                 </div>
-            </form> 
+            </form>
         </div>
     </div>
 </div>
@@ -949,7 +1131,7 @@
                                         @if($item->old_price1)
                                             <span style="color: #b50000; text-decoration: line-through; margin-right:5px;">US ${{$item->old_price1}}</span>
                                         @endif
-                                        
+
                                         @if($item->price)
                                             <span>US ${{$item->price}}</span>
                                         @else
@@ -1022,7 +1204,7 @@
         uk-sticky="start:0; end: #footer;  animation: uk-animation-slide-top; position: bottom;"
         style="position: fixed; top: 730px; width: 390px;">
         <div class="uk-container uk-container-small">
-            <ul class="uk-flex  uk-flex-center uk-flex-middle uk-flex-around"> 
+            <ul class="uk-flex  uk-flex-center uk-flex-middle uk-flex-around">
                 <li class="uk-padding-small">
 
                     <a href="#offcanvas-usage" uk-toggle class="uk-small-menu">
@@ -1067,7 +1249,7 @@
                         <input class="uk-input" id="emailid" name="emailid" required type="email">
                     </div>
                 </div>
-         
+
             <!-- new element added -->
                 <div class="uk-margin-small-top">
                     <label class="uk-form-label uk-text-bold" for="country">Country*</label>
@@ -1210,14 +1392,14 @@
   // Custom smooth scrolling with offset
   document.querySelectorAll('.sidenav a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function(event) {
-          event.preventDefault(); 
+          event.preventDefault();
 
           const target = document.querySelector(this.getAttribute("href"));
 
           if (target) {
               window.scrollTo({
                   top: target.offsetTop - 80,
-                 
+
               });
           }
       });
@@ -1245,9 +1427,9 @@
 @push('scripts')
     <script>
         window.isAuthenticated = @json(Auth::check());
-    
+
         document.addEventListener("DOMContentLoaded", function () {
-            let today = new Date().toISOString().split("T")[0]; 
+            let today = new Date().toISOString().split("T")[0];
             document.getElementById("date").setAttribute("min", today);
         });
     </script>
@@ -1259,14 +1441,14 @@
 
                 if (!window.isAuthenticated) {
                     let tripUri = "{{ $data->uri }}"; // current trip identifier
-                
+
                     $.post("{{ route('save.intended.trip') }}", {
                         _token: $('meta[name="csrf-token"]').attr('content'),
                         uri: tripUri
                     }).always(function () {
                         window.location.href = "{{ route('login.form') }}";
                     });
-                
+
                     return;
                 }
                 // alert('ok'); // Debugging: Check if button click is detected
@@ -1301,7 +1483,7 @@
                     }
                 });
             });
-            
+
             //for pdf download
             $(document).on('click', '.download-pdf-btn', function (e) {
                 if (!window.isAuthenticated) {

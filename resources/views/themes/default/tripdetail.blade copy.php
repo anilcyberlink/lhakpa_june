@@ -7,8 +7,8 @@
 @php
     $photo_videos = $photos->pluck('video')->filter();
 @endphp
-<section class=" uk-cover-container uk-position-relative uk-flex uk-flex-middle uk-background-norepeat uk-background-cover uk-background-top-center uk-background-fixed" uk-height-viewport data-src="{{ asset('uploads/banners/' . $data->banner) }}" alt="{{$data->trip_title}}" uk-img >
-    <div class="uk-overlay-banner uk-position-cover"></div>
+<section class=" uk-cover-container uk-position-relative uk-flex uk-flex-middle uk-background-norepeat uk-background-cover uk-background-top-center uk-background-fixed" uk-height-viewport data-src="{{ asset('uploads/banners/' . $data->banner) }}" alt="{{$data->trip_title}}" uk-img>
+     <div class="uk-overlay-banner uk-position-cover"></div>
     <div class="uk-container uk-width-1-1 pt-detail-150 pb-23 uk-position-relative">
         <div class="uk-flex uk-flex-middle uk-grid-collapse uk-margin-top" uk-grid uk-height-match="target: .uk-same-height">
             <div class="uk-width-3-4@m" id="container">
@@ -85,6 +85,19 @@
             <!-- banner side bar start -->
             <div class="uk-width-1-4@m uk-same-height">
                 <div class="uk-grey-bg  uk-padding-dicovery  uk-pattern-bg">
+                    <!--<div class="uk-flex uk-flex-between uk-flex-middle">-->
+                    <!--    {{-- <h2 class="uk-white uk-text-uppercase uk-margin-remove uk-visible@m">{{  optional($data->destinations()->first())->title }}</h2> --}}-->
+                    <!--    <div class="uk-flex uk-flex-middle">-->
+                    <!--        <button class="uk-wish-button uk-res-wishlist" id="wish-button" data-id="{{ $data->id }}"><span class="uk-visible@s" uk-icon="icon: heart; "  ></span> <span uk-icon="icon: heart; ratio: 1.5" class="uk-hidden@s"  ></span> </button>-->
+                            <!-- <button class="uk-wish-button" id="wish-button" onclick="toggleActive(this)"><i class="fa-solid fa-heart"></i></button> -->
+                    <!--        {{-- <h2 class="uk-white uk-text-uppercase uk-margin-remove">{{getDestinationNameByTripId($data->id)}}</h2> --}}-->
+                    <!--    </div>-->
+                    <!--    <div class="uk-star-rating uk-visible@m" style="margin: 7px 10px;">-->
+                    <!--        @for ($i = 0 ; $i < $data->rating ; $i++)-->
+                    <!--            <i class="fa-solid fa-star"></i>-->
+                    <!--        @endfor-->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <h3 class="uk-white uk-text-uppercase uk-margin-remove  uk-visible@m">{{ $data->trip_title }}</h3>
                     <hr style="border-color: var(--secondary);" class="uk-visible@m">
                     <p class="uk-white uk-text-justify line-five uk-visible@m">{{$data->sub_title}}</p>

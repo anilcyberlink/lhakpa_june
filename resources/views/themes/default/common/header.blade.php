@@ -484,6 +484,12 @@
                                                                         </div>
                                                                     @endforeach
                                                                 </div>
+                                                                <div class="uk-margin-medium-top pl-10">
+                                                                    <a href="{{ route('trekking-list',$value->uri) }}"
+                                                                    class="uk-btn uk-btn-secondary">
+                                                                        VIEW ALL PACKAGES
+                                                                    </a>
+                                                                </div>
 
                                                                 {{-- ONLY SHOW LIST IF MORE THAN 3 --}}
                                                                 @if ($remainingTrips->count() > 0)

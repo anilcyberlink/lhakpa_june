@@ -299,11 +299,45 @@
                                                </div>
                                             </div>
                                             <div class="uk-accordion-content uk-margin-remove">
-                                                <p>{!! $item->content !!}</p>
+                                                <div class="itinerary-content">
+                                                    {!! $item->content !!}
+                                                </div>
+                                                @if($item->duration || $item->transport)
+                                                    <div class="trip-extra-info">
+                                                        @if($item->duration)
+                                                            <div class="trip-info-item">
+                                                                <div class="trip-info-icon">
+                                                                    <i class="fas fa-hotel"></i>
+                                                                </div>
+                                                                <div class="trip-info-text">
+                                                                    <div class="trip-info-title">
+                                                                        Accommodation
+                                                                    </div>
+                                                                    <div class="trip-info-value">
+                                                                        {{ $item->duration }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if($item->transport)
+                                                            <div class="trip-info-item">
+                                                                <div class="trip-info-icon">
+                                                                    <i class="fas fa-bus"></i>
+                                                                </div>
+                                                                <div class="trip-info-text">
+                                                                    <div class="trip-info-title">
+                                                                        Transport
+                                                                    </div>
+                                                                    <div class="trip-info-value">
+                                                                        {{ $item->transport }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                @endif
                                             </div>
-
                                         </li>
-
                                     @endforeach
                                 </ul>
                             </div>
@@ -1395,9 +1429,75 @@
 
     </div>
 </div>
-<!--<div class="uk-flex fixed-date uk-hidden@m">  -->
-<!--    <a href="#offcanvas-usage" class=" uk-extra uk-secondary-bg uk-book-btn border uk-margin-small-top" uk-toggle><span uk-icon="icon: calendar; ratio: 1.5"  ></span></a>-->
-<!--</div> -->
+<style>
+.trip-extra-info{
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.trip-info-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 260px;
+}
+
+.trip-info-icon{
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #f3f7ea;
+    color: #8dbb32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.trip-info-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+.trip-info-title{
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-transform: none !important;
+    letter-spacing: 0;
+    margin-bottom: 2px;
+}
+
+.trip-info-value{
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    text-transform: none !important;
+    line-height: 1.5;
+}
+
+/* Mobile */
+@media(max-width: 767px){
+
+    .trip-extra-info{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .trip-info-item{
+        min-width: 100%;
+    }
+
+}
+</style>
+
+
 <script>
   // Custom smooth scrolling with offset
   document.querySelectorAll('.sidenav a[href^="#"]').forEach(anchor => {

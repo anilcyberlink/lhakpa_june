@@ -54,9 +54,9 @@ class TripController extends Controller
         $destinations = DestinationModel::all();
         $regions = RegionModel::all();
         $activities = ActivityModel::all();
-        $trip_groups = TripGroupModel::all();      
-        $ordering = TripModel::max('ordering');  
-        $availability = array( 'AVAILABLE' => 'AVAILABLE', 'GUARANTEED' => 'GUARANTEED', 'LIMITED'=>'LIMITED' ,'CLOSED' => 'CLOSED');     
+        $trip_groups = TripGroupModel::all();
+        $ordering = TripModel::max('ordering');
+        $availability = array( 'AVAILABLE' => 'AVAILABLE', 'GUARANTEED' => 'GUARANTEED', 'LIMITED'=>'LIMITED' ,'CLOSED' => 'CLOSED');
         $ordering += 1;
         $all_trips = TripModel::get();
         $grades = TripGradeModel::all();
@@ -68,7 +68,7 @@ class TripController extends Controller
         $travels=ActivityModel::where('activity_parent','travel')->get();
         $tripsTags = TripsTag::all();
         // dd($trip_type);
-        return view('admin.trips.create', compact('trek','all_trips', 'trip_type', 'grades', 'ordering', 'destinations', 'regions', 'activities', 
+        return view('admin.trips.create', compact('trek','all_trips', 'trip_type', 'grades', 'ordering', 'destinations', 'regions', 'activities',
         'trip_groups','expeditions','trekking','availability','activity','travels','tripsTags'));
     }
 
@@ -107,7 +107,7 @@ class TripController extends Controller
 
                 $destinationPath = public_path('uploads/banners');
 
-                $banner_picture = Image::make($file->getRealPath());                
+                $banner_picture = Image::make($file->getRealPath());
                 $banner_picture->save($destinationPath . '/' . $banner_name);
             }
 
@@ -135,10 +135,10 @@ class TripController extends Controller
                 $extension = $request->file('upload_pdf')->getClientOriginalExtension();
                 $pdf = explode('.', $pdf);
                 $pdf_name = Str::slug($pdf[0]) . '-' . Str::random(5) . '.' . $extension;
-                $destinationPath = public_path('uploads/pdf');  
+                $destinationPath = public_path('uploads/pdf');
                 $pdf_file->move($destinationPath, $pdf_name);
             }
-                
+
             $data['trip_pdf'] = $pdf_name;
 
             /******Upload Trip Map******/
@@ -197,7 +197,7 @@ class TripController extends Controller
             $result = TripModel::create($data);
             $last_id = $result->id;
 
-             
+
             // Insert into schedule
             if (isset($request->schedule_ordering)) {
                 $schedule_keys = array_keys($request->schedule_ordering);
@@ -244,7 +244,7 @@ class TripController extends Controller
 
                   // Insert into itinerary
               if(isset($request->itinerary_ordering)){
-                $keys = array_keys($request->itinerary_ordering);   
+                $keys = array_keys($request->itinerary_ordering);
                 $sn_itinerary = 1;
               $sn_itinerary_count = count($request->itinerary_ordering);
                 foreach($keys as $key){
@@ -253,17 +253,18 @@ class TripController extends Controller
                   }
                   $tripItinerary = new TripItineraryModel();
                   $tripItinerary->trip_detail_id = $last_id;
-                  $tripItinerary->ordering = $request->itinerary_ordering[$key];  
+                  $tripItinerary->ordering = $request->itinerary_ordering[$key];
                   $tripItinerary->days = $request->itinerary_days[$key];
                   $tripItinerary->title = $request->itinerary_title[$key];
-                   $tripItinerary->max_altitude = $request->itinerary_max_altitude[$key];
-                //   $tripItinerary->distance = $request->itinerary_distance[$key];
+                  $tripItinerary->max_altitude = $request->itinerary_max_altitude[$key];
+                  $tripItinerary->distance = $request->itinerary_distance[$key];
                   $tripItinerary->duration = $request->itinerary_duration[$key];
-                  $tripItinerary->content = $request->itinerary_content[$key];          
-                  $tripItinerary->save(); 
-                  $sn_itinerary++;     
+                  $tripItinerary->transport = $request->itinerary_transport[$key];
+                  $tripItinerary->content = $request->itinerary_content[$key];
+                  $tripItinerary->save();
+                  $sn_itinerary++;
                 }
-              }            
+              }
 
             // Insert Photo Videos
             if (isset($request->gear_ordering)) {
@@ -291,7 +292,7 @@ class TripController extends Controller
                     $gearData->save();
                     $sn_gear++;
                 }
-            }           
+            }
             //Insert Multiple Banner
             if(isset($request->banner_ordering)){
                 $banner_keys = array_keys($request->banner_ordering);
@@ -319,28 +320,28 @@ class TripController extends Controller
                     $sn_banner++;
                 }
             }
- 
+
              // Insert into testimonial
               if(isset($request->testimonial_ordering)){
-                $testimonial_keys = array_keys($request->testimonial_ordering);   
+                $testimonial_keys = array_keys($request->testimonial_ordering);
                 $sn_testimonial = 1;
                 $sn_testimonial_count = count($request->testimonial_ordering);
                 foreach($testimonial_keys as $key){
-                  if( $key + 1 >= $sn_testimonial_count ){ 
+                  if( $key + 1 >= $sn_testimonial_count ){
                     continue;
                   }
                   $tripTestimonial = new CostIncludesModel();
-                  $tripTestimonial->trip_detail_id = $last_id;       
-                  $tripTestimonial->ordering = $request->testimonial_ordering[$key];   
-                  $tripTestimonial->title = $request->testimonial_title[$key];    
-                  $tripTestimonial->content = $request->testimonial_content[$key];    
-                  $tripTestimonial->save(); 
-                  $sn_testimonial++;     
+                  $tripTestimonial->trip_detail_id = $last_id;
+                  $tripTestimonial->ordering = $request->testimonial_ordering[$key];
+                  $tripTestimonial->title = $request->testimonial_title[$key];
+                  $tripTestimonial->content = $request->testimonial_content[$key];
+                  $tripTestimonial->save();
+                  $sn_testimonial++;
                 }
               }
               // Insert into Info
               if(isset($request->info_ordering)){
-                $info_keys = array_keys($request->info_ordering);   
+                $info_keys = array_keys($request->info_ordering);
                 $sn_info = 1;
                 $sn_info_count = count($request->info_ordering);
                 foreach($info_keys as $key){
@@ -348,17 +349,17 @@ class TripController extends Controller
                     continue;
                   }
                   $tripInfo = new CostExcludesModel();
-                  $tripInfo->trip_detail_id = $last_id;       
-                  $tripInfo->ordering = $request->info_ordering[$key];   
-                  $tripInfo->title = $request->info_title[$key];    
-                  $tripInfo->content = $request->info_content[$key];    
-                  $tripInfo->save(); 
-                  $sn_info++;     
+                  $tripInfo->trip_detail_id = $last_id;
+                  $tripInfo->ordering = $request->info_ordering[$key];
+                  $tripInfo->title = $request->info_title[$key];
+                  $tripInfo->content = $request->info_content[$key];
+                  $tripInfo->save();
+                  $sn_info++;
                 }
-              }         
+              }
               // Insert into Guide
               if(isset($request->guide_ordering)){
-                $guide_keys = array_keys($request->guide_ordering);   
+                $guide_keys = array_keys($request->guide_ordering);
                 $sn_guide = 1;
                 $sn_guide_count = count($request->guide_ordering);
                 foreach($guide_keys as $key){
@@ -366,28 +367,28 @@ class TripController extends Controller
                     continue;
                   }
                   $tripGuide = new TripGuideModel();
-                  $tripGuide->trip_id = $last_id;       
-                  $tripGuide->ordering = $request->guide_ordering[$key];   
-                  $tripGuide->title = $request->guide_title[$key];    
-                  $tripGuide->content = $request->guide_content[$key];    
-                  $tripGuide->save(); 
-                  $sn_guide++;     
+                  $tripGuide->trip_id = $last_id;
+                  $tripGuide->ordering = $request->guide_ordering[$key];
+                  $tripGuide->title = $request->guide_title[$key];
+                  $tripGuide->content = $request->guide_content[$key];
+                  $tripGuide->save();
+                  $sn_guide++;
                 }
-              }            
+              }
 
         /************Attach******************/
         $_data = TripModel::find($last_id);
 
         $_data->regions()->attach($request->region);
         // $_data->activities()->attach($request->activity);
-        $_data->tripgroups()->attach($request->tripgroup);     
+        $_data->tripgroups()->attach($request->tripgroup);
 
         $_data->relatedtrips()->attach($request->related_trips);
-       
+
         /************************************/
         $allActivities = array_unique(array_merge(
-            $request->activity ?? [], 
-            $request->activity_type ?? [], 
+            $request->activity ?? [],
+            $request->activity_type ?? [],
             $request->travel_type ?? []
         ));
         if (!empty($allActivities)) {
@@ -429,8 +430,8 @@ class TripController extends Controller
         $checked_regions = array();
         $checked_activities = array();
         $checked_tripgroups = array();
-       
-       
+
+
         foreach ($data->destinations as $value) {
             $checked_destinations[] = $value->pivot->destination_id;
         }
@@ -443,7 +444,7 @@ class TripController extends Controller
         foreach ($data->tripgroups as $value) {
             $checked_tripgroups[] = $value->pivot->group_id;
         }
-         
+
          $availability = array('AVAILABLE' => 'AVAILABLE', 'GUARANTEED' => 'GUARANTEED', 'LIMITED'=>'LIMITED' ,'CLOSED' => 'CLOSED');
         $destinations = DestinationModel::all();
         $regions = RegionModel::all();
@@ -479,7 +480,7 @@ class TripController extends Controller
             'checked_destinations',
             'checked_regions',
             'checked_activities',
-            'checked_tripgroups', 
+            'checked_tripgroups',
             'schedules',
             'itineraries',
             'gears',
@@ -506,7 +507,7 @@ class TripController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->ajax()) {
-            
+
             $validator = Validator::make($request->all(), [
                 'trip_title' => 'required|unique:cl_trip_details,trip_title,' . $id,
                 'upload_pdf' => 'nullable|mimes:pdf|max:2048',
@@ -576,7 +577,7 @@ class TripController extends Controller
                 $data->trip_pdf = $pdf_name;
                 $data->save();
             }
-           
+
             /*****Thumbnail*****/
             if ($request->hasfile('thumbnail')) {
                 $data = TripModel::find($id);
@@ -685,12 +686,12 @@ class TripController extends Controller
             $_data->regions()->detach();
             $_data->regions()->attach($request->region);
             // $_data->activities()->detach();
-            // $_data->activities()->attach($request->activity);  
+            // $_data->activities()->attach($request->activity);
 
             /**start */
             $allActivities = array_unique(array_merge(
-                $request->activity ?? [], 
-                $request->activity_type ?? [], 
+                $request->activity ?? [],
+                $request->activity_type ?? [],
                 $request->travel_type ?? []
             ));
             $_data->activities()->sync($allActivities);
@@ -706,7 +707,7 @@ class TripController extends Controller
             } else {
                 $_data->tripTags()->detach();
             }
-            
+
               // Update Schedule
             if (isset($request->schedule_ordering)) {
                 $schedule_keys = array_keys($request->schedule_ordering);
@@ -794,9 +795,10 @@ class TripController extends Controller
                         $itineraryData->ordering = $request->itinerary_ordering[$key];
                         $itineraryData->days = $request->itinerary_days[$key];
                         $itineraryData->title = $request->itinerary_title[$key];
-                         $itineraryData->max_altitude = $request->itinerary_max_altitude[$key];
-                        // $itineraryData->distance = $request->itinerary_distance[$key];
+                        $itineraryData->max_altitude = $request->itinerary_max_altitude[$key];
+                        $itineraryData->distance = $request->itinerary_distance[$key];
                         $itineraryData->duration = $request->itinerary_duration[$key];
+                        $itineraryData->transport = $request->itinerary_transport[$key];
                         $itineraryData->content = $request->itinerary_content[$key];
                         $itineraryData->save();
                     } else if ($request->itinerary_id[$value] !== null && $request->itinerary_id[$value] !== "") {
@@ -806,8 +808,9 @@ class TripController extends Controller
                         $itineraryData->ordering = $request->itinerary_ordering[$key];
                         $itineraryData->days = $request->itinerary_days[$key];
                         $itineraryData->title = $request->itinerary_title[$key];
-                         $itineraryData->max_altitude = $request->itinerary_max_altitude[$key];
-                        // $itineraryData->distance = $request->itinerary_distance[$key];
+                        $itineraryData->max_altitude = $request->itinerary_max_altitude[$key];
+                        $itineraryData->distance = $request->itinerary_distance[$key];
+                        $itineraryData->transport = $request->itinerary_transport[$key];
                         $itineraryData->duration = $request->itinerary_duration[$key];
                         $itineraryData->content = $request->itinerary_content[$key];
                         $itineraryData->save();
@@ -871,7 +874,7 @@ class TripController extends Controller
                 }
             }
 
-            
+
             if (isset($request->banner_id)) {
                 $banner_keys = array_keys($request->banner_id);
                 $sn_banner = 1;
@@ -882,7 +885,7 @@ class TripController extends Controller
                         continue;
                     }
                     if ($request->banner_id[$value] == "") {
-                     
+
                         $bannerData = new TripBanner();
                         $bannerData->trip_detail_id = $data->id;
                         $banner_file = $request->file('banner_banner');
@@ -896,7 +899,7 @@ class TripController extends Controller
                         $bannerData->ordering = $request->banner_ordering[$key];
                         $bannerData->title = $request->banner_title[$key];
                         $bannerData->content = $request->banner_content[$key];
-               
+
                         $bannerData->save();
                     } else if ($request->banner_id[$value] !== null && $request->banner_id[$value] !== "") {
                         $banner_id = $request->banner_id[$value];
@@ -919,7 +922,7 @@ class TripController extends Controller
                         $bannerData->ordering = $request->banner_ordering[$key];
                         $bannerData->title = $request->banner_title[$key];
                         $bannerData->content = $request->banner_content[$key];
-                    
+
                         $bannerData->save();
                     }
 
@@ -1055,17 +1058,17 @@ class TripController extends Controller
              }
          }
 
-        $data->destinations()->detach();         
-        $data->regions()->detach();        
-        $data->activities()->detach();      
-        $data->tripgroups()->detach();          
-        $data->itineraries()->delete();        
+        $data->destinations()->detach();
+        $data->regions()->detach();
+        $data->activities()->detach();
+        $data->tripgroups()->detach();
+        $data->itineraries()->delete();
         $data->costincludes()->delete();
         $data->costexcludes()->delete();
         $data->guidelines()->delete();
         $data->schedules()->delete();
         $data->gears()->delete();
-        
+
         $data->delete();
         return 'Delete Successful';
     }
@@ -1083,7 +1086,7 @@ class TripController extends Controller
          $data->save();
          return response('Delete Successful.');
      }
- 
+
      // Delete Trip Banner
      public function delete_trip_banner(TripModel $tripModel, $id)
      {
@@ -1097,8 +1100,8 @@ class TripController extends Controller
          $data->save();
          return response('Delete Successful.');
      }
- 
-     // Delete Map 
+
+     // Delete Map
      public function delete_map(TripModel $tripModel, $id)
      {
          $data = TripModel::find($id);
@@ -1111,7 +1114,7 @@ class TripController extends Controller
          $data->save();
          return response('Delete Successful.');
      }
- 
+
      public function delete_chart(TripModel $tripModel, $id)
      {
          $data = TripModel::find($id);
@@ -1124,7 +1127,7 @@ class TripController extends Controller
          $data->save();
          return response('Delete Successful.');
      }
- 
+
      public function delete_pdf(TripModel $tripModel, $id)
      {
          $data = TripModel::find($id);
@@ -1137,7 +1140,7 @@ class TripController extends Controller
          $data->save();
          return response('Delete Successful.');
      }
-    
+
     public function tripstatus($id){
     $data = TripModel::find($id);
     if($data->status == '1'){
@@ -1151,28 +1154,28 @@ class TripController extends Controller
     }
     return 'Not success';
   }
-  
+
    public function trip_of_the_month(Request $request)
-    {  
-      $data = TripModel::find($request->id);      
+    {
+      $data = TripModel::find($request->id);
        $default = TripModel::where('id','!=', $data->id)->get();
     if($data->trip_of_the_month == '1'){
-      $data->trip_of_the_month = '0';   
-      $data->save();  
+      $data->trip_of_the_month = '0';
+      $data->save();
       return back();
     }else if($data->trip_of_the_month == '0'){
-       foreach($default as $row) {       
+       foreach($default as $row) {
         if ( $row->trip_of_the_month == '1' ) {
              $default = TripModel::where('id',$row->id)->update(['trip_of_the_month'=> '0']);
         }
     }
-      $data->trip_of_the_month = '1';      
-      $data->save();  
+      $data->trip_of_the_month = '1';
+      $data->save();
       return back();
     }
-    return back();  
+    return back();
   }
 
-  
-   
+
+
 }

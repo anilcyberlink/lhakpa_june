@@ -22,7 +22,7 @@
                 <p class="subtitle">We truly value your feedback. Your comments help us improve and keep offering high-quality, safe, and memorable adventures in the Himalayas. Thank you for taking the time to share your experience!</p>
             </div>
 
-            <form action="{{ route('post_feedback') }}" method="POST" id="feedbackForm">
+            <form action="{{ route('post_feedback') }}" method="POST" id="feedbackForm" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="g_recaptcha_response" name="g_recaptcha_response" />
                 <div class="form-body">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="uk-width-1-2@s">
-                            <label>Your Name (Optional)</label>
+                            <label>Your Name</label>
                             <div class="input-group">
                                 <input class="uk-input" type="text" name="full_name"
                                        value="{{ old('full_name') }}"
@@ -294,7 +294,63 @@
                         <textarea class="uk-textarea" rows="5" name="story" required>{{ old('story') }}</textarea>
                     </div>
 
-                    <div class="section-header"><span class="emoji-icon">06. ️</span>Future Treks</div>
+                    <div class="section-header">
+                        <span class="emoji-icon">06.</span> Image And Video
+                    </div>
+
+                    <div class="uk-grid-small uk-margin-top" uk-grid>
+                        <label>
+                            Share your favorite travel photos, video, or memorable moments with us for a chance to be featured on our website and magazine (with your permission).
+                        </label>
+
+                        {{-- Images Upload --}}
+                        <div class="uk-width-1-2@s">
+                            <label>Trip Images (Maximum 5) <span style="color:#80093f;">*</span></label>
+
+                            <div class="upload-btn-wrapper">
+                                <button type="button" class="btn-upload" onclick="document.getElementById('images').click()">
+                                    <i class="fa fa-cloud-upload"></i> Upload Images
+                                </button>
+                                <input type="file"
+                                    id="images"
+                                    name="images[]"
+                                    accept="image/jpeg,image/png,image/jpg,image/webp"
+                                    multiple
+                                    style="display:none">
+                            </div>
+
+                            <small style="display:block; margin-top:8px; color:#666;">
+                                Upload up to 5 files (jpg, jpeg, png, webp). Max 2 MB per file.
+                            </small>
+                            <div id="image-error" style="font-size:13px; color:#c0392b; margin-top:4px;"></div>
+                            <div id="image-preview-list" class="file-list"></div>
+                        </div>
+
+                        {{-- Video Upload --}}
+                        <div class="uk-width-1-2@s">
+                            <label>Trip Video <span style="color:#666; font-weight:400;">(Optional)</span></label>
+
+                            <div class="upload-btn-wrapper">
+                                <button type="button" class="btn-upload" onclick="document.getElementById('video').click()">
+                                    <i class="fa fa-cloud-upload"></i> Upload Video
+                                </button>
+                                <input type="file"
+                                    id="video"
+                                    name="video"
+                                    accept="video/mp4,video/webm,video/quicktime"
+                                    style="display:none">
+                            </div>
+
+                            <small style="display:block; margin-top:8px; color:#666;">
+                                Upload 1 file (mp4, webm, mov). Max 50 MB. Recommended: 1080p or below.
+                            </small>
+                            <div id="video-error" style="font-size:13px; color:#c0392b; margin-top:4px;"></div>
+                            <div id="video-preview-list" class="file-list"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="section-header"><span class="emoji-icon">07. ️</span>Future Treks</div>
 
                     <div class="rating-group">
                         <span class="rating-label">Would you like us to inform you about future treks, special offers, or new itineraries?</span>
@@ -419,7 +475,171 @@
         </div>
     </div>
 </section>
+<style>
+    /* Upload Section */
+.upload-btn-wrapper {
+    display: inline-block;
+}
 
+.btn-upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #80093f; /* match your maroon/pink brand color */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-upload:hover {
+    background-color: #80093f;
+}
+
+.btn-upload i {
+    font-size: 16px;
+}
+
+/* File item rows */
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #333;
+}
+
+.file-item span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+    color: #999;
+    transition: color 0.15s;
+}
+
+.btn-remove:hover {
+    color: #c0392b;
+}
+
+/* Error messages */
+#image-error,
+#video-error {
+    font-size: 13px;
+    color: #c0392b;
+    margin-top: 4px;
+    min-height: 0;
+}
+</style>
+<script>
+    const imageFiles = [];
+
+    function syncInputFiles() {
+        const dt = new DataTransfer();
+        imageFiles.forEach(f => dt.items.add(f));
+        document.getElementById('images').files = dt.files;
+    }
+
+    function renderImageList() {
+        const list = document.getElementById('image-preview-list');
+        list.innerHTML = imageFiles.map((f, i) => `
+            <div class="file-item">
+                <span>
+                    <i class="fa fa-file-image-o"></i>
+                    ${f.name} (${(f.size / 1024 / 1024).toFixed(2)} MB)
+                </span>
+                <button type="button" class="btn-remove" onclick="removeImage(${i})" aria-label="Remove">
+                    <i class="fa fa-times" style="color:#c0392b;"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+
+    function removeImage(idx) {
+        imageFiles.splice(idx, 1);
+        syncInputFiles();
+        document.getElementById('image-error').textContent = '';
+        renderImageList();
+    }
+
+    document.getElementById('images').addEventListener('change', function () {
+        const err = document.getElementById('image-error');
+        const incoming = Array.from(this.files);
+
+        const oversized = incoming.filter(f => f.size > 2 * 1024 * 1024);
+        if (oversized.length) {
+            err.textContent = `These files exceed 2 MB: ${oversized.map(f => f.name).join(', ')}`;
+            this.value = '';
+            return;
+        }
+
+        const newUnique = incoming.filter(
+            f => !imageFiles.some(e => e.name === f.name && e.size === f.size)
+        );
+
+        if (imageFiles.length + newUnique.length > 5) {
+            err.textContent = `Maximum 5 images allowed. You already have ${imageFiles.length}.`;
+            this.value = '';
+            return;
+        }
+
+        err.textContent = '';
+        imageFiles.push(...newUnique);
+        syncInputFiles();
+        renderImageList();
+    });
+
+    // For video
+    document.getElementById('video').addEventListener('change', function () {
+        const err = document.getElementById('video-error');
+        const list = document.getElementById('video-preview-list');
+        const file = this.files[0];
+
+        if (!file) return;
+
+        if (file.size > 50 * 1024 * 1024) {
+            err.textContent = 'Video exceeds the 50 MB limit.';
+            this.value = '';
+            list.innerHTML = '';
+            return;
+        }
+
+        err.textContent = '';
+        list.innerHTML = `
+            <div class="file-item d-flex align-items-center justify-content-between">
+                <span>
+                    <i class="fa fa-file-video-o"></i>
+                    ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+                </span>
+                <button type="button" class="btn-remove" onclick="this.closest('.file-item').remove(); document.getElementById('video').value='';" aria-label="Remove">
+                    <i class="fa fa-times text-danger"></i>
+                </button>
+            </div>
+        `;
+    });
+</script>
 <script>
     // Show/hide "Other" text input for "How did you hear about us?"
     document.querySelectorAll('input[name="heard_about"]').forEach(radio => {

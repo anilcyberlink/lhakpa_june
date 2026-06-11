@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 /************************** Bibek Routes Starts *********************************/
 Route::group(['namespace' => 'Auth'], function () {
-    Route::get('/register-page', 'RegisterController@register_page')->name('register');  
+    Route::get('/register-page', 'RegisterController@register_page')->name('register');
     Route::post('/register', 'RegisterController@store')->name('user-registration');
     Route::get('/login', 'LoginController@login_page')->name('login-page');
     Route::post('/user-login', 'LoginController@login_user')->name('user.login');
@@ -16,8 +16,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('/user/verify/{token}', 'RegisterController@verifyUser')->name('verify-user');
     Route::get('/forgot-password', 'ForgotPasswordController@forgot_password_page')->name('forgot-password');
     Route::post('/recovery-mail', 'ForgotPasswordController@recovery_mail')->name('recovery-mail');
-    Route::any('/reset-password/{token}', 'ForgotPasswordController@reset_password')->name('reset-password');  
-
+    Route::any('/reset-password/{token}', 'ForgotPasswordController@reset_password')->name('reset-password');
 });
 Route::get('/account-profile', 'UserController@user_profile')->name('user-profile');
 Route::post('/account-profile', 'UserController@user_profile')->name('user-profile');
@@ -25,10 +24,10 @@ Route::get('/user-history', 'UserController@user_history')->name('user-history')
 Route::get('/user-recommendation', 'UserController@user_recommendation')->name('user-recommendation');
 Route::get('/user-wishlist', 'UserController@user_wishlist')->name('user-wishlist');
 Route::get('/user-review', 'UserController@user_review')->name('user-review');
-Route::post('/user-review', 'UserController@user_review')->name('user-review');  
-Route::get('wishlist/{id?}', 'UserController@add_wishlist')->name('add-wishlist');  
+Route::post('/user-review', 'UserController@user_review')->name('user-review');
+Route::get('wishlist/{id?}', 'UserController@add_wishlist')->name('add-wishlist');
 Route::get('delete-wishlist/{id}', 'UserController@delete_wishlist')->name('delete-wishlist');
-Route::get('/all-reviews','UserController@all_review')->name('all-review');
+Route::get('/all-reviews', 'UserController@all_review')->name('all-review');
 
 Route::view('/thank-you-happy', 'themes.default.thankyou-happy')->name('thankyou.happy');
 Route::view('/thank-you-support', 'themes.default.thankyou-support')->name('thankyou.support');
@@ -37,20 +36,20 @@ Route::view('/thank-you-support', 'themes.default.thankyou-support')->name('than
 
 
 /************************** Sangam Routes Starts *********************************/
-Route::get('/himalayan/payment/verify/{data}',[HBLController::class,'payment_verify'])->name('himalayan.payment.verify');
-Route::any('/himalayan/success',[HBLController::class,'success'])->name('himalayan.success');
-Route::any('/himalayan/failed',[HBLController::class,'failure'])->name('himalayan.failure');
+Route::get('/himalayan/payment/verify/{data}', [HBLController::class, 'payment_verify'])->name('himalayan.payment.verify');
+Route::any('/himalayan/success', [HBLController::class, 'success'])->name('himalayan.success');
+Route::any('/himalayan/failed', [HBLController::class, 'failure'])->name('himalayan.failure');
 Route::get('/himalayan-bank/response/{id?}', [HBLController::class, 'response'])->name('himalayan.payment.response');
-Route::get('/payment-direct', [DirectPayController::class,'payment_direct'])->name('payment.direct');
-Route::post('/payment-store', [DirectPayController::class,'payment_store'])->name('payment.store');
-Route::get('/payment-verify/{id}', [DirectPayController::class,'payment_verify'])->name('payment.verify');
-Route::any('/payment/success', [DirectPayController::class,'success'])->name('payment.success');
-Route::any('/payment/failed', [DirectPayController::class,'failure'])->name('payment.failure');
+Route::get('/payment-direct', [DirectPayController::class, 'payment_direct'])->name('payment.direct');
+Route::post('/payment-store', [DirectPayController::class, 'payment_store'])->name('payment.store');
+Route::get('/payment-verify/{id}', [DirectPayController::class, 'payment_verify'])->name('payment.verify');
+Route::any('/payment/success', [DirectPayController::class, 'success'])->name('payment.success');
+Route::any('/payment/failed', [DirectPayController::class, 'failure'])->name('payment.failure');
 Route::get('/payment/response/{id?}', [DirectPayController::class, 'response'])->name('payment.response');
-Route::get('/login-form',[FrontpageController::class, 'login_form'])->name('login.form');
-Route::post('/review',[FrontpageController::class, 'reviewCreate'])->name('review.create');
-Route::get('/forgot-password',[FrontpageController::class, 'forgot_password'])->name('forgot.password');
-Route::post('/reset-password',[FrontpageController::class, 'reset_password'])->name('reset.password');
+Route::get('/login-form', [FrontpageController::class, 'login_form'])->name('login.form');
+Route::post('/review', [FrontpageController::class, 'reviewCreate'])->name('review.create');
+Route::get('/forgot-password', [FrontpageController::class, 'forgot_password'])->name('forgot.password');
+Route::post('/reset-password', [FrontpageController::class, 'reset_password'])->name('reset.password');
 Route::get('/reset-password-form', [FrontpageController::class, 'showResetForm'])->name('reset.password.form');
 Route::post('/update-password', [FrontpageController::class, 'updatePassword'])->name('password.update');
 /************************** Sangam Routes Ends ***********************************/
@@ -67,14 +66,15 @@ Route::redirect('/dashboard', '/admin/dashboard', 301);
 //================== Frontend Routes=================//
 Route::post('subscribe', 'FrontendControllers\FrontpageController@subscribe')->name('subscribe');
 Route::get('feedback', 'FrontendControllers\FrontpageController@feedback')->name('feedback');
+Route::get('feedback-all', 'FrontendControllers\FrontpageController@feedback_all')->name('feedback_all');
 Route::post('post-feedback', 'FrontendControllers\FrontpageController@post_feedback')->name('post_feedback');
 Route::get('/verify/{token}', 'FrontendControllers\FrontpageController@verifyUser')->name('verify-user');
 Route::get('/contact-verify/{token}', 'FrontendControllers\FrontpageController@verifyContact')->name('verify-contact');
 //pdf download
-Route::get('/trip/download/{id}', 'FrontendControllers\FrontpageController@downloadPdf') ->name('trip.download.pdf');
+Route::get('/trip/download/{id}', 'FrontendControllers\FrontpageController@downloadPdf')->name('trip.download.pdf');
 // Normal Pages
 Route::get('{uri}.html', 'FrontendControllers\FrontpageController@pagedetail')->name('page.pagedetail');
-Route::get('type-{uri}', 'FrontendControllers\FrontpageController@posttype')->name('page.posttype_detail');  
+Route::get('type-{uri}', 'FrontendControllers\FrontpageController@posttype')->name('page.posttype_detail');
 
 Route::get('page/expedition/{uri}.html', 'FrontendControllers\FrontpageController@expedition')->name('expedition-list');
 Route::get('page/tour.html', 'FrontendControllers\FrontpageController@tour')->name('tour');
@@ -90,7 +90,7 @@ Route::get('captcha', 'CaptchaController@refreshCaptcha');
 Route::post('/save-intended-trip', 'FrontendControllers\FrontpageController@saveIntendedTrip')->name('save.intended.trip');
 
 // Trip Pages
-Route::get('book-now', 'FrontendControllers\FrontpageController@book_now');  
+Route::get('book-now', 'FrontendControllers\FrontpageController@book_now');
 Route::any('book/{uri}.html', 'FrontendControllers\FrontpageController@showbooking')->name('page.booking');
 Route::get('booking-success', 'FrontendControllers\FrontpageController@showbookingsuccess')->name('page.bookingsuccess');
 Route::get('page/{uri}.html', 'FrontendControllers\FrontpageController@tripdetail')->name('page.tripdetail');
@@ -133,9 +133,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/changepassword', 'AdminControllers\Members\UserController@changepassword')->name('admin.changepassword');
     Route::get('admin/viewUser/{id}', 'AdminControllers\Members\UserController@viewDetail')->name('admin.viewDetail');
     //For feedback
-    Route::delete('admin/feedback/{id}','AdminControllers\Feedback\FeedbackController@destroy')->name('admin.feedback.destroy');
-    Route::get('admin/feedbacks','AdminControllers\Feedback\FeedbackController@index')->name('admin.feedbacks');
-    Route::get('admin/feedbacks/{id}','AdminControllers\Feedback\FeedbackController@show')->name('admin.feedbacks.show');
+    Route::delete('admin/feedback/{id}', 'AdminControllers\Feedback\FeedbackController@destroy')->name('admin.feedback.destroy');
+    Route::get('admin/feedbacks', 'AdminControllers\Feedback\FeedbackController@index')->name('admin.feedbacks');
+    Route::get('admin/feedbacks/{id}', 'AdminControllers\Feedback\FeedbackController@show')->name('admin.feedbacks.show');
+    Route::get('admin/feedbacks/{id}/toggle-status', 'AdminControllers\Feedback\FeedbackController@toggleStatus')->name('admin.feedback.toggle-status');
 
     Route::resources([
         'admin/user' => 'AdminControllers\Members\UserController',
@@ -149,7 +150,7 @@ Route::middleware(['auth'])->group(function () {
         'admin/tripgroup' => 'AdminControllers\Travels\TripGroupController',
         'admin/destination' => 'AdminControllers\Destinations\DestinationController',
         'admin/teams' => 'AdminControllers\Teams\TeamController',
-        'admin/teamcategory'=>'AdminControllers\Teams\TeamCategoryController',
+        'admin/teamcategory' => 'AdminControllers\Teams\TeamCategoryController',
         'admin.testimonials' => 'AdminControllers\Cost\CostIncludesController',
         'admin.trip-gear' => 'AdminControllers\Travels\TripGearController',
         'category-inquiry' => 'AdminControllers\Inquiry\TripFilmMakingController',
@@ -161,7 +162,7 @@ Route::middleware(['auth'])->group(function () {
         'admin.faq' => 'AdminControllers\Faqs\FaqController',
 
     ]);
-    Route::post('/bookings/{id}/update-status','AdminControllers\Inquiry\TripBookingController@updateStatus')->name('bookings.updateStatus');
+    Route::post('/bookings/{id}/update-status', 'AdminControllers\Inquiry\TripBookingController@updateStatus')->name('bookings.updateStatus');
     Route::post('banner-isdefault/{id?}', 'AdminControllers\Banners\BannerController@isdefault')->name('banner.isdefault');
     Route::post('activity-isdefault/{id?}', 'AdminControllers\Travels\ActivityController@isdefault')->name('activity.isdefault');
     Route::get('admin/tour-trip/{id}', 'AdminControllers\Destinations\DestinationController@filter'); //Was trip-expedition
@@ -259,8 +260,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin-review-status', 'AdminControllers\Review\TripReviewController@review_status')->name('review-status');
     Route::get('admin-trip-edit-review/{id?}/edit', 'AdminControllers\Review\TripReviewController@edit_trip_review');
     Route::post('admin-trip-edit-review/{id?}', 'AdminControllers\Review\TripReviewController@edit_trip_review')->name('edit-trip-review');
-    Route::get('admin-trip-show-review/{id}', 'AdminControllers\Review\TripReviewController@reivew_show')->name('review.show');//By Sangam
-    Route::get('admin-trip-delete-review/{id?}', 'AdminControllers\Review\TripReviewController@delete_trip_review')->name('delete-trip-review'); 
+    Route::get('admin-trip-show-review/{id}', 'AdminControllers\Review\TripReviewController@reivew_show')->name('review.show'); //By Sangam
+    Route::get('admin-trip-delete-review/{id?}', 'AdminControllers\Review\TripReviewController@delete_trip_review')->name('delete-trip-review');
 
     //Trip Booking (Bibek)
     Route::get('admin-trip-booking', 'AdminControllers\Inquiry\TripBookingController@trip_booking')->name('trip-booking');
@@ -283,7 +284,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('subscriber-edit/{id?}', 'SendMailController@useredit')->name('subscriber.update');
     Route::post('subscriber-edit/{id?}', 'SendMailController@useredit')->name('subscriber.edit');
     Route::get('subscriber-delete/{id?}', 'SendMailController@userdelete')->name('user.delete');
-    //for downloading csv file 
+    //for downloading csv file
     Route::get('download', 'SendMailController@downloadData')->name('download');
     // Delete image
     Route::delete('delete_video/{id}', 'AdminControllers\Banners\BannerController@delete_video')->name('delete_video');
@@ -305,11 +306,11 @@ Route::middleware(['auth'])->group(function () {
         $view->with('posttype', $posttype);
     });
 
-    Route::delete('admin/certificates/{id}/{info_id}','AdminControllers\Teams\TeamController@certificatesdestroy')->name('certificates.destroy');
-    
+    Route::delete('admin/certificates/{id}/{info_id}', 'AdminControllers\Teams\TeamController@certificatesdestroy')->name('certificates.destroy');
+
     /************** Sangam Starts ****************/
-    Route::get('/payment/index',[DirectPayController::class,'index'])->name('payment.index');
-    Route::get('/payment/show/{id}',[DirectPayController::class,'show'])->name('payment.show');
-    Route::get('/payment/delete/{id}',[DirectPayController::class,'delete'])->name('payment.delete');
+    Route::get('/payment/index', [DirectPayController::class, 'index'])->name('payment.index');
+    Route::get('/payment/show/{id}', [DirectPayController::class, 'show'])->name('payment.show');
+    Route::get('/payment/delete/{id}', [DirectPayController::class, 'delete'])->name('payment.delete');
     /************** Sangam Ends ******************/
 });

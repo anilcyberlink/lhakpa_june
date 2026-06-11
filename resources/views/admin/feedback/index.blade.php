@@ -20,6 +20,7 @@
                                     <th class="text-center"> SN </th>
                                     <th>Trip </th>
                                     <th>Full Name </th>
+                                    <th>Status<br>(Click to change) </th>
                                     <th>Action </th>
                                 </tr>
                             </thead>
@@ -31,6 +32,16 @@
                                         </td>
                                         <td>{{ $row->trip }}</td>
                                         <td>{{ $row->full_name }}</td>
+                                        <td class=" align-middle">
+                                            <a href="{{ route('admin.feedback.toggle-status', $row->id) }}"
+                                            class="text-decoration-none">
+                                                @if($row->status == '1')
+                                                    <i class="fa fa-check-circle text-success fa-2x"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle text-danger fa-2x"></i>
+                                                @endif
+                                            </a>
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.feedbacks.show',$row->id)}}">View</a>
                                             |

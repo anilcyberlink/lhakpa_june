@@ -21,6 +21,7 @@ use App\Models\Destinations\DestinationActivityrelModel;
 use App\Models\Expeditions\ExpeditionModel;
 use App\Models\Posts\PostImageModel;
 use App\Models\Inquiry\BookingModel;
+use App\Models\Inquiry\FeedbackModel;
 
 
 
@@ -468,6 +469,40 @@ function get_trip_type($id){
     return $trip_type;
 }
 
+function feedback_satisfaction_stats()
+{
+    $feedbacks = FeedbackModel::where('status', '1')->get();
+
+    $total = $feedbacks->count();
+
+    $satisfied = $feedbacks
+        ->whereIn('overall', ['excellent', 'good'])
+        ->count();
+
+    return [
+        'total_reviews' => $total,
+        'satisfaction_percentage' => $total > 0
+            ? round(($satisfied / $total) * 100)
+            : 0,
+    ];
+}
+function feedback_overall_stars($percentage)
+{
+    return round(($percentage / 100) * 5);
+}
+
+function feedback_review_stars($overall)
+{
+    $overall = strtolower(trim($overall));
+
+    return match ($overall) {
+        'excellent' => 5,
+        'good'      => 4,
+        'average'   => 3,
+        'poor'      => 2,
+        default     => 1,
+    };
+}
 //By Sangam Starts
 
 function get_experience_type($trip)

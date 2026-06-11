@@ -129,6 +129,7 @@
                                 <li><a href="{{route('page.posttype_detail',$nav->uri)}}">{{$nav->post_type}} </a></li>
                             @endforeach
                             <li><a href="{{ route('feedback') }}">Give Feedback</a></li>
+                            <li><a href="{{route('feedback_all')}}">All Feedbacks</a></li>
                         </ul>
                     </div>
                 </div>

@@ -35,6 +35,7 @@ use App\Mail\AgentMail;
 use App\Models\Team\TeamModel;
 use App\Models\Posts\PostModel;
 use App\Models\Inquiry\FeedbackModel;
+use App\Models\Inquiry\FeedbackImage;
 use App\Mail\AdminCustomizeTrip;
 use App\Mail\AdminTailorMadeMail;
 use App\Models\Travels\TripModel;
@@ -114,7 +115,7 @@ class FrontpageController extends Controller
             'team',
             'guide',
             'activity_list'
-           
+
         ));
     }
 
@@ -272,12 +273,16 @@ class FrontpageController extends Controller
         $suggestionPage= PostTypeModel::where('id', '31')->first();
         $termPage= PostTypeModel::where('id', '41')->first();
         $whyusPage= PostTypeModel::where('id', '24')->first();
-        // dd($international);
+
+        $feedbacks = FeedbackModel::latest()->where('status', '1')->limit(5)->get();
+        $feedback_stats = feedback_satisfaction_stats();
+        // dd($feedbacks);
+
         return view('themes.default.tripdetail', compact('data', 'trip_review',
             'cost_includes', 'cost_excludes', 'itinerary','guidelines','experts','international',
-            'photo_videos', 'activity','related_trips','photos','videos','local','banner','setting','schedules','faqs','aboutPage','womenPage','foundationPage','internationalPage','suggestionPage','teamPage','termPage','whyusPage'));
-    }  
-    
+            'photo_videos', 'activity','related_trips','photos','videos','local','banner','setting','schedules','faqs','aboutPage','womenPage','foundationPage','internationalPage','suggestionPage','teamPage','termPage','whyusPage','feedbacks','feedback_stats'));
+    }
+
     public function downloadPdf($id)
     {
         // Must be logged in (otherwise redirect)
@@ -285,22 +290,22 @@ class FrontpageController extends Controller
             session(['intended_trip_uri' => $trip->uri]);
             return redirect()->route('login.form');
         }
-    
+
         // Fetch trip
         $trip = TripModel::findOrFail($id);
-    
+
         // Save to DB using model
         DownloadPdfModel::create([
             'user_id'    => auth()->id(),
             'trip_title' => $trip->trip_title,
         ]);
-    
+
         // File download
         $path = public_path(env('PUBLIC_PATH') . 'uploads/pdf/' . $trip->trip_pdf);
-    
+
         return response()->download($path);
     }
-    
+
     public function saveIntendedTrip(Request $request)
     {
         session()->put('needLogin', true);
@@ -367,7 +372,7 @@ class FrontpageController extends Controller
         // dd($request->all());
         $setting = SettingModel::where('id', 1)->first();
         $g_recaptcha_response = $request->input('g_recaptcha_response');
-        $result = $this->getCaptcha($g_recaptcha_response); 
+        $result = $this->getCaptcha($g_recaptcha_response);
         if ($result->success == true) {
             if ($request->isMethod('post')) {
                 $request->validate([
@@ -390,23 +395,23 @@ class FrontpageController extends Controller
                     'country' => $request->country,
                     'address' => $request->address,
                     'email' => $request->email,
-                    'phone' => $request->phone,  
+                    'phone' => $request->phone,
                     'trip_start_date'=>$request->trip_start_date,
                     'message'=>$request->message,
                     'paid_status' => 0,
-                    
+
                     'depature_type' => $request->depature_type,
                     'trip_end_date'=>$request->trip_end_date ?? null,
                     'meal' => $request->meal ?? null,
                     'price' => $request->price ?? null,
                 ]);
                 if ($create) {
-             
+
                     // return new AdminBookingMail();
-                    // return new BookTrip($request->email);    
+                    // return new BookTrip($request->email);
                     if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
                         Mail::to($setting->email_primary)->send(new AdminBookingMail($request));
-                    } 
+                    }
                     else
                     {
                         Mail::to('info@lhakpatrekking.com')->send(new AdminBookingMail($request));
@@ -424,7 +429,7 @@ class FrontpageController extends Controller
             return back()->with('error', 'Please fill in the correct information');
         }
     }
-    
+
     private function getCaptcha($secretKey)
     {
         $secret_key = env('SECRET_KEY');
@@ -460,14 +465,14 @@ class FrontpageController extends Controller
                 $post->number = $request->number;
                 $post->country = $request->country;
                 $post->message= $request->message;
-                
+
                 $trip = '';
                 if($request->trip_id){
                     $trip = TripModel::where('id',$request->trip_id)->first();
                 }
                 if ($post->save()) {
-                 
-                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) { 
+
+                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
                         Mail::send(new AdminInquiryMail());
                     }
                     $name = $request->name;
@@ -487,7 +492,7 @@ class FrontpageController extends Controller
         // dd($request->all());
         $setting = SettingModel::where('id', 1)->first();
         $g_recaptcha_response = $request->input('g_recaptcha_response');
-        $result = $this->getCaptcha($g_recaptcha_response); 
+        $result = $this->getCaptcha($g_recaptcha_response);
         if ($result->success == true) {
             if ($request->isMethod('post')) {
                 $request->validate([
@@ -510,7 +515,7 @@ class FrontpageController extends Controller
                     // Mail::to('anilcyberlink@gmail.com')->send(new AdminBookingMail($request));
                     if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
                         Mail::to($setting->email_primary)->send(new AdminBookingMail($request));
-                    } 
+                    }
                     else
                     {
                         Mail::to('info@lhakpatrekking.com')->send(new AdminBookingMail($request));
@@ -534,7 +539,7 @@ class FrontpageController extends Controller
         // dd($request->all());
         $setting = SettingModel::where('id', 1)->first();
         $g_recaptcha_response = $request->input('g_recaptcha_response');
-        $result = $this->getCaptcha($g_recaptcha_response); 
+        $result = $this->getCaptcha($g_recaptcha_response);
         if ($result->success == true) {
             if ($request->isMethod('post')) {
                 $request->validate([
@@ -560,12 +565,12 @@ class FrontpageController extends Controller
                     'cname' => $request->cname,
                 ]);
                 if ($create) {
-             
+
                     // return new AgentMail($setting->email_primary);
-                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) { 
+                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
                         // Mail::send(new AgentMail($setting->email_primary));
                         Mail::to($setting->email_primary)->send(new AgentMail($request));
-                    } 
+                    }
                     else
                     {
                         Mail::to('info@lhakpatrekking.com')->send(new AgentMail($request));
@@ -582,7 +587,7 @@ class FrontpageController extends Controller
         }
 
     }
-    
+
     public function feedback()
     {
         // dd('test');
@@ -629,9 +634,13 @@ class FrontpageController extends Controller
                 'future_destinations_other' => 'nullable|string|max:255',
                 'heard_about' => 'required|in:website,social_media,friend,previous_trip,travel_fair,other',
                 'heard_about_other' => 'nullable|required_if:heard_about,other|string|max:255',
+
+                'images' => 'nullable|array|max:5',
+                'images.*' => 'file|mimes:jpg,jpeg,png,webp|max:2048',
+                'video' => 'nullable|file|mimes:mp4,webm,mov|max:51200',
             ]);
 
-            FeedbackModel::create([
+            $feedback = FeedbackModel::create([
                 // Section 01: About Your Trek
                 'trip' => $validated['trip'],
                 'departure' => $validated['departure'],
@@ -671,6 +680,34 @@ class FrontpageController extends Controller
                 'heard_about_other' => $validated['heard_about_other'] ?? null,
                 'feedback_consent' => $validated['feedback_consent'],
             ]);
+
+            // Save images
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $filename = $image->getClientOriginalName();
+                    $image->move(public_path('uploads/feedbacks'), $filename);
+                    FeedbackImage::create([
+                        'feedback_id' => $feedback->id,
+                        'filename' => $filename,
+                        'type' => 'image',
+                    ]);
+                }
+            }
+
+            // Save video
+            if ($request->hasFile('video')) {
+                $filename = $request->file('video')->getClientOriginalName();
+                $request->file('video')->move(
+                    public_path('uploads/feedbacks'),
+                    $filename
+                );
+                FeedbackImage::create([
+                    'feedback_id' => $feedback->id,
+                    'filename' => $filename,
+                    'type' => 'video',
+                ]);
+            }
+
             if($request->overall== "excellent" || $request->overall== "very-good")
             {
                 return redirect()->route('thankyou.happy')->with('success', 'Feedback Sent Successfully!');
@@ -684,6 +721,16 @@ class FrontpageController extends Controller
             return back()->with('error', 'Please fill in the correct information');
         }
     }
+
+    public function feedback_all()
+    {
+        $feedbacks = FeedbackModel::where('status', '1')->latest()->paginate(7);
+        $feedback_stats = feedback_satisfaction_stats();
+
+        return view('themes.default.feedback-all',compact('feedbacks','feedback_stats'));
+
+    }
+
     public function subscribe(Request $request)
     {
         try {
@@ -777,7 +824,7 @@ class FrontpageController extends Controller
         if (isset($verifyUser)) {
             $user = $verifyUser->users;
             if (!$user->verified) {
-                $verifyUser->users->verified = 1;  
+                $verifyUser->users->verified = 1;
                 $verifyUser->users->save();
                 $user->subscriber()->update(['verified' => 1]); // update the verified field in the subscriber table
                 $status = "Your e-mail is verified. You can now login.";
@@ -791,7 +838,7 @@ class FrontpageController extends Controller
         return redirect()->intended(url('/'))->with('success', $status);
     }
 
-    public function contact_us(Request $request)  
+    public function contact_us(Request $request)
     {
         // dd($request->all());
         $g_recaptcha_response = $request->input('g_recaptcha_response');
@@ -803,7 +850,7 @@ class FrontpageController extends Controller
                 'email' => 'required|email',
                 'expert' => 'nullable|exists:cl_team,id'
             ]);
-            
+
             if($request->expert){
                 $experts = TeamModel::where('id',$request->expert)->first();
             }
@@ -940,7 +987,7 @@ class FrontpageController extends Controller
             //     $query = ActivityModel::find($request->id)->trips();
             // }
         }
-    
+
         if ($request->duration) {
             $query->where('duration', '<=', $request->duration)->orderBy('duration', 'desc');
         }
@@ -1001,11 +1048,11 @@ class FrontpageController extends Controller
     public function search_all(Request $request)
     {
         $content_search = $request->search;
-        // Search Trips 
+        // Search Trips
         // dd($content_search);
         $trip = TripModel::where('status', '1')->where('trip_title', 'like', '%' . trim($content_search) . '%')->orWhere('uri', 'like', '%' . trim($content_search) . '%')->get();
 
-        //Search Category 
+        //Search Category
         $category = ActivityModel::where('title', 'like', '%' . trim($content_search) . '%')->orWhere('uri', 'like', '%' . trim($content_search) . '%')->get();
 
         //Search Post(Company)
@@ -1040,7 +1087,7 @@ class FrontpageController extends Controller
             $trip = TripModel::where('uri', $uri)->first();
 
             $schedule = $request->schedule_id ? $trip->schedules()->where('id', $request->schedule_id)->first() : null;
-            $start_date = $schedule && $schedule->start_date ? $schedule->start_date : null; 
+            $start_date = $schedule && $schedule->start_date ? $schedule->start_date : null;
             $end_date = $schedule && $schedule->end_date ? $schedule->end_date : null;
 
             $trips = TripModel::all();
@@ -1054,10 +1101,10 @@ class FrontpageController extends Controller
             session()->forget('needLogin');
             return redirect()->route('login.form')->with('error','Please login first');
         }
-      
+
     }
 
-    
+
 
 
     public function showbookingsuccess()
@@ -1069,7 +1116,7 @@ class FrontpageController extends Controller
     {
         $setting = SettingModel::where('id', 1)->first();
         $g_recaptcha_response = $request->input('g_recaptcha_response');
-        $result = $this->getCaptcha($g_recaptcha_response); 
+        $result = $this->getCaptcha($g_recaptcha_response);
         if ($result->success == true) {
             if ($request->isMethod('post')) {
                 $request->validate([
@@ -1103,18 +1150,18 @@ class FrontpageController extends Controller
                     'trip_start_date' => $request->date,
                 ]);
                 if ($create) {
-             
+
                     // return new AdminCustomizeTrip($setting->email_primary);
-                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) { 
+                    if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
                         // Mail::send(new AdminCustomizeTrip($setting->email_primary));
                         Mail::to($setting->email_primary)->send(new AdminCustomizeTrip($request));
-                    } 
+                    }
                     else
                     {
                         Mail::to('info@lhakpatrekking.com')->send(new AdminCustomizeTrip($request));
                     }
                     $name = $request->fname;
-                    $message = "<p>Thank you for submitting your customized trip request. 
+                    $message = "<p>Thank you for submitting your customized trip request.
                                     One of our team members will contact you shortly to discuss your preferences and confirm the details.</p>
                                 <p>We look forward to helping you plan an unforgettable journey with Lhakpa Trekking.</p>";
                     return view('themes.default.booking-success', compact('name', 'message','trip'));
@@ -1123,14 +1170,14 @@ class FrontpageController extends Controller
         } else {
             return back()->with('error', 'Please fill in the correct information');
         }
-     
+
     }
 
     public function expedition(Request $request)
     {
         $item= ActivityModel::where('uri',$request->uri)->first();
         $query = ActivityModel::find($item->id)->trips()->where('status','1')->orderBy('ordering','asc');
-        $dataAll = $query->get(); 
+        $dataAll = $query->get();
         $data = $query->paginate(5);
         $trekGrade = TripGradeModel::get();
         // dd($data,$item);
@@ -1141,7 +1188,7 @@ class FrontpageController extends Controller
     {
         $item= ActivityModel::where('uri',$request->uri)->first();
         $query = ActivityModel::find($item->id)->trips()->where('status','1')->orderBy('ordering','asc');
-        $dataAll = $query->get(); 
+        $dataAll = $query->get();
         $data = $query->paginate(5);
         $trekGrade = TripGradeModel::get();
 
@@ -1154,20 +1201,20 @@ class FrontpageController extends Controller
         return view('themes.default.tour', compact('data'));
     }
 
-    public function trekking(Request $request)  
+    public function trekking(Request $request)
     {
         $item= ActivityModel::where('uri',$request->uri)->first();
         $query = ActivityModel::find($item->id)->trips()->where('status','1')->orderBy('ordering','asc');
-        $dataAll = $query->get(); 
+        $dataAll = $query->get();
         $data = $query->paginate(5);
         $trekGrade = TripGradeModel::get();
         return view('themes.default.trekking', compact('dataAll','data','item','trekGrade'));
     }
-    public function travel(Request $request)  
+    public function travel(Request $request)
     {
         $item= ActivityModel::where('uri',$request->uri)->first();
         $query = ActivityModel::find($item->id)->trips()->where('status','1')->orderBy('ordering','asc');
-        $dataAll = $query->get(); 
+        $dataAll = $query->get();
         $data = $query->paginate(5);
         $trekGrade = TripGradeModel::get();
         return view('themes.default.travel', compact('dataAll','data','item','trekGrade'));
@@ -1196,7 +1243,7 @@ class FrontpageController extends Controller
     // public function teamdetail($uri)
     // {
     //     $data = TeamModel::where(['uri'=> $uri])->orWhere('team_key', $uri)->first();
-        
+
     //     $certificates = $data->certificates()->orderBy('ordering','asc')->get();
     //     $related=$relatedData = TeamModel::where('id', '!=', optional($data)->id)
     //     ->where('category', optional($data)->category)
@@ -1240,10 +1287,10 @@ class FrontpageController extends Controller
                     $image->move($destinationPath, $name);
                     $data['image'] = $name;
                 }
-                
+
                 // $data=$request->all();
                 $create=TripReview::create($data);
-        
+
                 return redirect()->back()->with('success','Review posted successfully');
             }
             catch(\Exception $e){
@@ -1307,19 +1354,19 @@ class FrontpageController extends Controller
                 'token' => 'required',
                 'password' => 'required|confirmed|min:8',
             ]);
-    
+
             $reset = PasswordReset::where('email', $request->email)->where('token', $request->token)->first();
-    
+
             if (!$reset || now()->diffInMinutes($reset->created_at) > 5) {
                 return back()->with(['error' => 'Invalid or expired token']);
             }
-    
+
             $user = User::where('email', $request->email)->first();
             $user->password = Hash::make($request->password);
             $user->save();
-    
+
             PasswordReset::where('email', $request->email)->delete();
-    
+
             return redirect()->route('login.form')->with('success', 'Password reset successfully!');
         }
         catch(\Exception $e){

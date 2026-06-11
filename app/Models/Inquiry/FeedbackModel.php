@@ -3,6 +3,8 @@
 namespace App\Models\Inquiry;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inquiry\FeedbackImage;
+
 
 class FeedbackModel extends Model
 {
@@ -46,6 +48,8 @@ class FeedbackModel extends Model
         'heard_about',
         'heard_about_other',
         'feedback_consent',
+
+        'status'
     ];
 
     protected $casts = [
@@ -53,6 +57,10 @@ class FeedbackModel extends Model
         'future_destinations' => 'array',
         'departure' => 'date',
     ];
+    public function images()
+    {
+        return $this->hasMany(FeedbackImage::class, 'feedback_id');
+    }
 }
 
 

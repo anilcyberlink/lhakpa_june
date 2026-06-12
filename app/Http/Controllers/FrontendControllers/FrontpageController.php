@@ -148,7 +148,7 @@ class FrontpageController extends Controller
         $trips = TripModel::where(['status' => '1'])->get();
         $travels = ActivityModel::where('activity_parent','travel')->get();
         $experts = TeamModel::where('show_in_home',1)->get();
-        // dd($documents);
+        // dd($team_category);
         return view('themes.default.' . $data['template'] . '', compact('data', 'posts','news','your_group_post','setting','reviews','team_category','related_teams','international','trips','travels','experts','documents'));
     }
 
@@ -211,6 +211,19 @@ class FrontpageController extends Controller
         ));
     }
 
+    public function team_detail($uri)
+    {
+        $data = TeamModel::where('uri', $uri)->firstOrFail();
+
+        $related_teams = TeamModel::where('id', '!=', $data->id)
+            ->where('category', $data->category)
+            ->where('status', '1')
+            ->take(4)
+            ->get();
+        // dd($related_teams,$data);
+
+        return view('themes.default.team-detail',compact('data','related_teams'));
+    }
     public function pagedetail_child($parenturi, $uri)
     {
         $data = PostModel::where('uri', $uri)->orWhere('page_key', $uri)->first();

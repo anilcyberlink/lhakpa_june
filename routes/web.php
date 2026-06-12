@@ -75,6 +75,7 @@ Route::get('/trip/download/{id}', 'FrontendControllers\FrontpageController@downl
 // Normal Pages
 Route::get('{uri}.html', 'FrontendControllers\FrontpageController@pagedetail')->name('page.pagedetail');
 Route::get('type-{uri}', 'FrontendControllers\FrontpageController@posttype')->name('page.posttype_detail');
+Route::get('team-detail/{uri}', 'FrontendControllers\FrontpageController@team_detail')->name('page.team_detail');
 
 Route::get('page/expedition/{uri}.html', 'FrontendControllers\FrontpageController@expedition')->name('expedition-list');
 Route::get('page/tour.html', 'FrontendControllers\FrontpageController@tour')->name('tour');

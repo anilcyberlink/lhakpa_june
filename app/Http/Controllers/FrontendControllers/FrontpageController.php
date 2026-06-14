@@ -1253,6 +1253,21 @@ class FrontpageController extends Controller
         return view('themes.default.expeditionlist', compact('data'));
     }
 
+    public function extensionlist()
+    {
+        $data = ActivityModel::where('activity_parent','extension')->orderBy('ordering','asc')->paginate(6);
+        // dd($data);
+        return view('themes.default.extensionlist', compact('data'));
+    }
+    public function extension_detail($uri)
+    {
+        $data = ActivityModel::where('activity_parent','extension')->where('uri',$uri)->firstOrFail();
+        $related = ActivityModel::where('activity_parent', 'extension')->where('uri', '!=', $uri)->orderBy('ordering', 'asc')->get();
+        
+        // dd($data);
+        return view('themes.default.extension-detail', compact('data','related'));
+    }
+
     // public function teamdetail($uri)
     // {
     //     $data = TeamModel::where(['uri'=> $uri])->orWhere('team_key', $uri)->first();

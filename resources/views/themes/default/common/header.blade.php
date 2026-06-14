@@ -664,6 +664,30 @@
                                                             </a>
                                                         </div>
                                                     @endif
+                                                    <div>
+                                                        <a href="{{ route('page.extensionlist') }}">
+                                                            <div class="uk-list-shine uk-media-140 uk-cover-container border  uk-display-block uk-transition-toggle uk-link-toggle"
+                                                                href="detail.php">
+                                                                <img class="uk-image uk-cover uk-transition-scale-up uk-transition-opaque"
+                                                                    src="{{ asset('theme-assets/img/mountain/mountain8.jpeg') }}" />
+                                                                <div
+                                                                    class="uk-overlay-banner uk-heading-overlay uk-position-cover">
+                                                                </div>
+                                                                <div
+                                                                    class="uk-overlay-primary uk-inner-overlay2 uk-position-cover">
+                                                                </div>
+                                                                <div
+                                                                    class="uk-position-bottom-center  uk-activities uk-text-center uk-title-font">
+                                                                    <h2 class="uk-secondary mb-18">
+                                                                        Extension Packages
+                                                                    </h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-box uk-contents">
+                                                                <p>Protecting nature, respecting people, and encouraging our guides are at the heart of everything we do.</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                                 <div
                                                     class="uk-flex uk-flex-middle uk-flex-center uk-margin uk-margin-remove-bottom">

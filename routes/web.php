@@ -117,6 +117,8 @@ Route::any('search-page', 'FrontendControllers\FrontpageController@search_all')-
 Route::get('activity-list', 'FrontendControllers\FrontpageController@activitylist')->name('page.activitylist');
 Route::get('trekking-list', 'FrontendControllers\FrontpageController@trekkinglist')->name('page.trekkinglist');
 Route::get('expedition-list', 'FrontendControllers\FrontpageController@expeditionlist')->name('page.expeditionlist');
+Route::get('extension-list', 'FrontendControllers\FrontpageController@extensionlist')->name('page.extensionlist');
+Route::get('extension-detail/{uri}', 'FrontendControllers\FrontpageController@extension_detail')->name('extension-detail');
 
 
 

@@ -18,79 +18,83 @@ class TripBookingController extends Controller
 
     public function index()
     {
-        $data = Contact::orderBy('id','desc')->get();
-        return view('admin.contact.index',compact('data'));    
+        $data = Contact::orderBy('id', 'desc')->get();
+        return view('admin.contact.index', compact('data'));
     }
 
-   
+
     public function destroy($id)
     {
         $del = Contact::findorfail($id);
-       
-           $del->delete();
-             return redirect()->back()->with('success','Contact deleted  successfully');       
-        
+
+        $del->delete();
+        return redirect()->back()->with('success', 'Contact deleted  successfully');
     }
 
     public function trip_booking(Request $request)
-     {
-     if ($request->isMethod('get'))
-     {
-         $book=BookingModel::orderby('id','desc')->get();  
-         return view('admin.trip-booking.index',compact('book'));
+    {
+        if ($request->isMethod('get')) {
+            $book = BookingModel::orderby('id', 'desc')->get();
+            return view('admin.trip-booking.index', compact('book'));
+        }
+    }
 
-     }
+    public function view_trip_booking($id)
+    {
+        $book = BookingModel::where('id', $id)->first();
+        return view('admin.trip-booking.show', compact('book'));
     }
-    
-     public function view_trip_booking($id)
-     {
-      $book = BookingModel::where('id',$id)->first();
-      return view('admin.trip-booking.show',compact('book'));
-     
-    }
-    
+
     public function trip_booking_delete(Request $request)
     {
         $del = BookingModel::findorfail($request->id);
         $flight = FlightDetails::where('booking_id', $del->id)->first();
-        $insurance = Insurance::where('booking_id',$del->id)->first();
+        $insurance = Insurance::where('booking_id', $del->id)->first();
         $emergency = Emergency::where('booking_id', $del->id)->first();
-        if($flight){
+        if ($flight) {
             $flight->delete();
         }
-        if($insurance){
+        if ($insurance) {
             $insurance->delete();
         }
-        if($emergency){
+        if ($emergency) {
             $emergency->delete();
         }
-        if($del->delete())
-        {
-            return redirect()->back()->with('success','Booking deleted  successfully');
+        if ($del->delete()) {
+            return redirect()->back()->with('success', 'Booking deleted  successfully');
         }
     }
 
     public function update_status(Request $request)
     {
         $data = BookingModel::findorFail($request->id);
-        if($data){
+        if ($data) {
             $data->paid_status = 1;
             $data->update();
-            return redirect()->back()->with('success','Mark as paid  successfully');
+            return redirect()->back()->with('success', 'Mark as paid  successfully');
         }
-        return redirect()->back()->with('error','Booking not found');
+        return redirect()->back()->with('error', 'Booking not found');
     }
-    
+
     public function updateStatus($id)
     {
         $booking = BookingModel::findOrFail($id);
         // dd($booking);
         $booking->paid_status = $booking->paid_status == 1 ? 0 : 1;
         $booking->save();
-        Mail::to($booking->email)->send(new FeedbackMail($booking));
+        // Mail::to($booking->email)->send(new FeedbackMail($booking));
 
         return response()->json(['message' => 'Booking status updated successfully!', 'status' => $booking->paid_status]);
     }
+    public function sendFeedback($id)
+    {
+        $booking = BookingModel::findOrFail($id);
 
-    
+        Mail::to($booking->email)->send(new FeedbackMail($booking));
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Feedback email sent successfully!'
+        ]);
+    }
 }

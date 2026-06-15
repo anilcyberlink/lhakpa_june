@@ -166,6 +166,9 @@ Route::middleware(['auth'])->group(function () {
 
     ]);
     Route::post('/bookings/{id}/update-status', 'AdminControllers\Inquiry\TripBookingController@updateStatus')->name('bookings.updateStatus');
+    Route::post('/bookings/{id}/send-feedback',
+        'AdminControllers\Inquiry\TripBookingController@sendFeedback'
+    )->name('bookings.sendFeedback');
     Route::post('banner-isdefault/{id?}', 'AdminControllers\Banners\BannerController@isdefault')->name('banner.isdefault');
     Route::post('activity-isdefault/{id?}', 'AdminControllers\Travels\ActivityController@isdefault')->name('activity.isdefault');
     Route::get('admin/tour-trip/{id}', 'AdminControllers\Destinations\DestinationController@filter'); //Was trip-expedition

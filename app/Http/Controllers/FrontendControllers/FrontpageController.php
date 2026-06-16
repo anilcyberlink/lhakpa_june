@@ -853,43 +853,53 @@ class FrontpageController extends Controller
 
     public function contact_us(Request $request)
     {
-        // dd($request->all());
         $g_recaptcha_response = $request->input('g_recaptcha_response');
         $result = $this->getCaptcha($g_recaptcha_response);
-        if ($result->success == true && $result->score > 0.6) {
-            $request->validate([
-                'full_name' => 'required',
-                'number' => 'required',
-                'email' => 'required|email',
-                'expert' => 'nullable|exists:cl_team,id'
-            ]);
 
-            if($request->expert){
-                $experts = TeamModel::where('id',$request->expert)->first();
-            }
-            // dd($request->all(),$request->expert);
-
-            if ($request->isMethod('post')) {
-                $setting = SettingModel::where('id', 1)->first();
-                $create = Contact::create([
-                    'full_name' => $request->full_name,
-                    'email' => $request->email,
-                    'number' => $request->number,
-                    'message' => $request->message,
-                    'country' => $request->country,
-                    'expert' => $request->expert ?? NULL
-                ]);
-                // return new AdminContactMail();
-                if (filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
-                    Mail::send(new \App\Mail\AdminContactMail($request->email));
-                }
-                $name = $request->full_name;
-                $message = "<p>Thank you for contacting us. One of our team member will be in touch with you soon.</p>";
-                return view('themes.default.contact-success', compact('message', 'name'));
-            }
-        } else {
+        if (!($result->success)) {
             return back()->with('error', 'Please fill in the correct information');
         }
+
+        $validated = $request->validate([
+            'full_name' => 'required|string',
+            'number'    => 'required',
+            'email'     => 'required|email',
+            'message'   => 'nullable|string',
+            'country'   => 'nullable|string',
+            'expert'    => 'nullable|exists:cl_team,id',
+        ]);
+
+        Contact::create([
+            'full_name' => $validated['full_name'],
+            'email'     => $validated['email'],
+            'number'    => $validated['number'],
+            'message'   => $validated['message'] ?? null,
+            'country'   => $validated['country'] ?? null,
+            'expert'    => $validated['expert'] ?? null,
+        ]);
+
+        $setting = SettingModel::find(1);
+        // return new AdminContactMail($validated);
+
+        if ($setting && filter_var($setting->email_primary, FILTER_VALIDATE_EMAIL)) {
+
+            $mail = Mail::to($setting->email_primary);
+
+            if (!empty($validated['expert'])) {
+                $expert = TeamModel::find($validated['expert']);
+
+                if ($expert && filter_var($expert->email, FILTER_VALIDATE_EMAIL)) {
+                    $mail->cc($expert->email);
+                }
+            }
+
+            $mail->send(new AdminContactMail($validated));
+        }
+
+        $name = $validated['full_name'];
+        $message = 'Thank you for contacting us. One of our team members will be in touch with you soon.';
+
+        return view('themes.default.contact-success', compact('message', 'name'));
     }
 
 
@@ -1263,7 +1273,7 @@ class FrontpageController extends Controller
     {
         $data = ActivityModel::where('activity_parent','extension')->where('uri',$uri)->firstOrFail();
         $related = ActivityModel::where('activity_parent', 'extension')->where('uri', '!=', $uri)->orderBy('ordering', 'asc')->get();
-        
+
         // dd($data);
         return view('themes.default.extension-detail', compact('data','related'));
     }
